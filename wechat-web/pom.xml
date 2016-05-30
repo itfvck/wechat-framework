@@ -21,10 +21,5 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.itfvck.wechatframework</groupId>
-			<artifactId>wechat-core</artifactId>
-			<version>${wechat.version}</version>
-		</dependency>
 	</dependencies>
 </project>
