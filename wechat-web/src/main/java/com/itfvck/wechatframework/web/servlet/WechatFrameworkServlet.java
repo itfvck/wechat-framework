@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.itfvck.wechatframework.core.support.WechatSupport;
 import com.itfvck.wechatframework.web.service.WechatDefaultService;
-import com.itfvck.wechatframework.web.support.WechatSupport;
 
 /**
  * 默认servlet初始化层
