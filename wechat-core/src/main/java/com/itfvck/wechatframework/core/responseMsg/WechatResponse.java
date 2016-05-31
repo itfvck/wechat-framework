@@ -2,10 +2,10 @@ package com.itfvck.wechatframework.core.responseMsg;
 
 import java.util.List;
 
-import com.itfvck.wechatframework.core.msg.Article;
+import com.itfvck.wechatframework.core.msg.ArticleResponse;
 import com.itfvck.wechatframework.core.msg.Image;
-import com.itfvck.wechatframework.core.msg.Music;
-import com.itfvck.wechatframework.core.msg.Video;
+import com.itfvck.wechatframework.core.msg.MusicResponse;
+import com.itfvck.wechatframework.core.msg.VideoResponse;
 import com.itfvck.wechatframework.core.msg.Voice;
 
 public class WechatResponse {
@@ -17,11 +17,11 @@ public class WechatResponse {
 
     private Image Image;// 回复 图片消息
     private Voice Voice;// 回复语音消息
-    private Video Video;// 回复视频消息
-    private Music Music;// 回复音乐消息
+    private VideoResponse Video;// 回复视频消息
+    private MusicResponse Music;// 回复音乐消息
 
     private Integer ArticleCount;// 图文消息个数,限制在10条内
-    private List<Article> Articles;
+    private List<ArticleResponse> Articles;
     private String KfAccount;// 指定会话接入的客服账号
 
     public String getToUserName() {
@@ -80,19 +80,19 @@ public class WechatResponse {
         Voice = voice;
     }
 
-    public Video getVideo() {
+    public VideoResponse getVideo() {
         return Video;
     }
 
-    public void setVideo(Video video) {
+    public void setVideo(VideoResponse video) {
         Video = video;
     }
 
-    public Music getMusic() {
+    public MusicResponse getMusic() {
         return Music;
     }
 
-    public void setMusic(Music music) {
+    public void setMusic(MusicResponse music) {
         Music = music;
     }
 
@@ -104,11 +104,11 @@ public class WechatResponse {
         ArticleCount = articleCount;
     }
 
-    public List<Article> getArticles() {
+    public List<ArticleResponse> getArticles() {
         return Articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(List<ArticleResponse> articles) {
         Articles = articles;
     }
 

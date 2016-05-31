@@ -3,7 +3,7 @@ package com.itfvck.wechatframework.core.msg;
 /**
  * 图文消息
  */
-public class Article {
+public class ArticleResponse {
     /**
      * 图文消息名称
      */

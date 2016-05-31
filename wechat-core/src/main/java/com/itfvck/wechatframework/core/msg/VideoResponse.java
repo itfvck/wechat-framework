@@ -3,7 +3,7 @@ package com.itfvck.wechatframework.core.msg;
 /**
  * 视频
  */
-public class Video {
+public class VideoResponse {
     /**
      * 媒体文件ID
      */
@@ -11,7 +11,10 @@ public class Video {
     private String Title;// 视频消息的标题
     private String Description;// 视频消息的描述
 
-    public Video(String mediaId, String title, String description, String thumbMediaId) {
+    public VideoResponse() {
+    }
+
+    public VideoResponse(String mediaId, String title, String description, String thumbMediaId) {
         this.MediaId = mediaId;
         this.Title = title;
         this.Description = description;

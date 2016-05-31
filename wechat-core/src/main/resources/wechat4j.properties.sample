@@ -1,0 +1,27 @@
+
+#you server url
+wechat.url=
+#you wechat token
+wechat.token=token
+#message secret key,if don't set then message is cleartext
+wechat.encodingaeskey=
+
+#wechat appid
+wechat.appid=appid
+#wechat app secret
+wechat.appsecret=appsecret
+
+#wechat mch id
+wechat.mch.id=
+#wechat mch api secret key, must be 32 length
+wechat.mch.key=
+
+#wechat access token server ,when you save in db,must implement you server class
+#this class must extend org.sword.wechat4j.token.server.CustomerServer
+#if no this property,then token server is default memery accesstoken server
+wechat.accessToken.server.class=
+
+#jsapi_ticket customer server class name,
+#this class must extend  org.sword.wechat4j.token.server.CustomerServer
+#if no this property,then ticket server is default memery ticket server
+wechat.ticket.jsapi.server.class=

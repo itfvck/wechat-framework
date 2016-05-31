@@ -10,12 +10,12 @@ import com.itfvck.wechatframework.core.common.WechatParam;
 import com.itfvck.wechatframework.core.mp.WXBizMsgCrypt;
 import com.itfvck.wechatframework.core.requestMsg.WechatRequest;
 import com.itfvck.wechatframework.core.responseMsg.WechatResponse;
-import com.itfvck.wechatframework.core.util.MessageUtil;
+import com.itfvck.wechatframework.core.util.XmlHelper;
 
 abstract class WechatDispatcher {
 
     public String service(HttpServletRequest request, WechatConfig conf, WechatParam params) throws Exception {
-        WechatRequest wechatRequest = MessageUtil.fromXML(MessageUtil.parseXml(request, conf, params));
+        WechatRequest wechatRequest = XmlHelper.toObj(XmlHelper.parseXml(request, conf, params));
         String xml = null;
         // 消息类型
         switch (MsgType.valueOf(wechatRequest.getMsgType())) {
@@ -161,7 +161,7 @@ abstract class WechatDispatcher {
      * @UpdateAuthor
      */
     protected String formatWechatResponse(WechatRequest wechatRequest, WechatResponse wechatResponse) {
-        return MessageUtil.toXML(setWechatResponseBase(wechatRequest, wechatResponse));
+        return XmlHelper.toXML(setWechatResponseBase(wechatRequest, wechatResponse));
     }
 
     private WechatResponse setWechatResponseBase(WechatRequest wechatRequest, WechatResponse response) {

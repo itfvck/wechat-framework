@@ -3,7 +3,7 @@ package com.itfvck.wechatframework.core.msg;
 /**
  * 音乐
  */
-public class Music {
+public class MusicResponse {
     /**
      * 音乐标题
      */
@@ -25,7 +25,10 @@ public class Music {
      */
     private String ThumbMediaId;
 
-    public Music(String title, String description, String musicUrl, String hQMusicUrl, String thumbMediaId) {
+    public MusicResponse() {
+    }
+
+    public MusicResponse(String title, String description, String musicUrl, String hQMusicUrl, String thumbMediaId) {
         Title = title;
         Description = description;
         MusicUrl = musicUrl;

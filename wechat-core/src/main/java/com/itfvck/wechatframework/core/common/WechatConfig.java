@@ -23,7 +23,14 @@ public class WechatConfig {
     private String mchKey;
     private String accessTokenServer;
     private String jsApiTicketServer;
-    private static WechatConfig config = new WechatConfig();
+
+    private static class SingletonClassInstance {
+        private static final WechatConfig instance = new WechatConfig();
+    }
+
+    public static WechatConfig getInstance() {
+        return SingletonClassInstance.instance;
+    }
 
     private WechatConfig() {
         Properties p = new Properties();
@@ -70,7 +77,7 @@ public class WechatConfig {
     }
 
     public static WechatConfig instance() {
-        return config;
+        return SingletonClassInstance.instance;
     }
 
     public String getToken() {

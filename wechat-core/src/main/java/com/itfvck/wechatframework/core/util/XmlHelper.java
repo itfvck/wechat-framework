@@ -16,14 +16,14 @@ import com.itfvck.wechatframework.core.common.WechatConfig;
 import com.itfvck.wechatframework.core.common.WechatParam;
 import com.itfvck.wechatframework.core.mp.AesException;
 import com.itfvck.wechatframework.core.mp.WXBizMsgCrypt;
-import com.itfvck.wechatframework.core.msg.Article;
+import com.itfvck.wechatframework.core.msg.ArticleResponse;
 import com.itfvck.wechatframework.core.requestMsg.Item;
 import com.itfvck.wechatframework.core.requestMsg.WechatRequest;
 import com.itfvck.wechatframework.core.responseMsg.WechatResponse;
 import com.thoughtworks.xstream.XStream;
 
-public class MessageUtil {
-    static Logger logger = LoggerFactory.getLogger(MessageUtil.class);
+public class XmlHelper {
+    static Logger logger = LoggerFactory.getLogger(XmlHelper.class);
     private static XStream xstream = new XStream();
 
     /**
@@ -46,15 +46,58 @@ public class MessageUtil {
         return document.asXML();
     }
 
-    public static WechatRequest fromXML(String xml) {
+    /**
+     * 将XML格式的字符串转换为WechatRequest对象，"xml"作为根节点，"item"作为Item根节点，其他节点为对象字段
+     * 
+     * @param xml
+     *            从流中读取出来的XML转换后的字符串
+     * @see Item
+     * @see WechatRequest
+     * @return WechatRequest
+     */
+    public static WechatRequest toObj(String xml) {
         xstream.alias("xml", WechatRequest.class);
         xstream.alias("item", Item.class);
         return (WechatRequest) xstream.fromXML(xml);
     }
 
+    /**
+     * 将WechatResponse对象转换为XML格式的字符串，"xml"作为根节点，"item"作为ArticleResponse根节点，其他节点为对象字段
+     * 
+     * @param response
+     *            将要返回给微信服务器的消息对象
+     * @see ArticleResponse
+     * @see WechatResponse
+     * @return
+     */
     public static String toXML(WechatResponse response) {
         xstream.alias("xml", WechatResponse.class);
-        xstream.alias("item", Article.class);
+        xstream.alias("item", ArticleResponse.class);
         return xstream.toXML(response);
+    }
+
+    /**
+     * 将XML字符串转换为对象的通用方法，"xml"作为跟节点，其他节点为对象字段
+     * 
+     * @param xml
+     *            XML字符串转
+     * @param t
+     *            传入具体对象类型，需要将该对象作为XML根节点
+     * @return
+     */
+    public static Object toObj(String xml, Class t) {
+        xstream.alias("xml", t);
+        return xstream.fromXML(xml);
+    }
+
+    /**
+     * 将对象转换为XML字符串的通用方法，"xml"作为根节点，其他节点为对象字段
+     * 
+     * @param t
+     * @return
+     */
+    public static String toXML(Object t) {
+        xstream.alias("xml", t.getClass());
+        return xstream.toXML(t);
     }
 }
