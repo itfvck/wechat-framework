@@ -47,8 +47,10 @@ public abstract class AbsServer implements IServer {
         String className = customerServerClass;
         IServer customerServer = null;
         try {
-            Class clazz = Class.forName(className);
-            customerServer = (IServer) clazz.newInstance();
+            if (StringUtils.isNotEmpty(className)) {
+                Class clazz = Class.forName(className);
+                customerServer = (IServer) clazz.newInstance();
+            }
         } catch (Exception e) {
             logger.error("系统找不到" + className);
             logger.error("自定义server实例化失败，" + e.getMessage());

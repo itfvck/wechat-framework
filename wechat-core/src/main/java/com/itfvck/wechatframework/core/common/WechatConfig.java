@@ -28,10 +28,6 @@ public class WechatConfig {
         private static final WechatConfig instance = new WechatConfig();
     }
 
-    public static WechatConfig getInstance() {
-        return SingletonClassInstance.instance;
-    }
-
     private WechatConfig() {
         Properties p = new Properties();
         InputStream inStream = this.getClass().getResourceAsStream(configFile);

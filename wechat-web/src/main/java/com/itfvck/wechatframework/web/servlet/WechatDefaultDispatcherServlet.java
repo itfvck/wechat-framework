@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.itfvck.wechatframework.core.common.WechatConfig;
 import com.itfvck.wechatframework.core.common.WechatParam;
 import com.itfvck.wechatframework.core.util.SignatureUtil;
 
@@ -24,7 +25,7 @@ public class WechatDefaultDispatcherServlet extends WechatFrameworkServlet {
         try {
             out = response.getWriter();
             // 通过检验signature对请求进行校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败
-            if (SignatureUtil.checkSignature(params, conf)) {
+            if (SignatureUtil.checkSignature(params, WechatConfig.instance())) {
                 out.print(params.getEchostr());
             } else {
                 out.print("params=" + params.toString());
@@ -39,7 +40,6 @@ public class WechatDefaultDispatcherServlet extends WechatFrameworkServlet {
             }
             out = null;
         }
-        doPost(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,7 +50,7 @@ public class WechatDefaultDispatcherServlet extends WechatFrameworkServlet {
         try {
             out = response.getWriter();
             // 调用核心服务类接收处理请求
-            xml = wechatService.service(request, conf, params);
+            xml = getWechatService().service(request, WechatConfig.instance(), params);
             out.print(xml);
         } catch (Exception e) {
             logger.error("核心服务类接收处理请求错误", xml + "\n" + e);

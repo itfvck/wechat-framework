@@ -5,6 +5,7 @@ package com.itfvck.wechatframework.core.token.timer;
 
 import java.util.TimerTask;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,9 +35,12 @@ public class AccessTokenTimer extends TimerTask {
         // 获取成功之后持久化accessToken
         if (accessToken.request()) {
             AccessTokenServer accessTokenServer = new AccessTokenServer();
-            CustomerServer customerServer = (CustomerServer) accessTokenServer.customerServer();
-            customerServer.save(accessToken);
+            if (accessTokenServer.customerServer() != null) {
+                CustomerServer customerServer = (CustomerServer) accessTokenServer.customerServer();
+                customerServer.save(accessToken);
+            }
         }
+        logger.info("accessToken 定时任务结束，获取新的accessToken:" + accessToken.getToken());
     }
 
 }
