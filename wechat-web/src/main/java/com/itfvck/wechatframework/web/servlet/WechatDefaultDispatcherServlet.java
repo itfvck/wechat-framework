@@ -4,32 +4,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.itfvck.wechatframework.core.common.WechatConfig;
 import com.itfvck.wechatframework.core.common.WechatParam;
 import com.itfvck.wechatframework.core.util.SignatureUtil;
-import com.itfvck.wechatframework.web.support.WechatSupport;
 
-public abstract class WechatDefaultDispatcher extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    static Logger logger = LoggerFactory.getLogger(WechatDefaultDispatcher.class);
-
-    private WechatSupport wechatService = null;
-    private WechatConfig conf = WechatConfig.instance();
-
-    public WechatSupport getWechatService() {
-        return wechatService;
-    }
-
-    public void setWechatService(WechatSupport wechatService) {
-        this.wechatService = wechatService;
-    }
+public class WechatDefaultDispatcherServlet extends WechatFrameworkServlet {
+    private static final long serialVersionUID = -9199915074190263799L;
+    static Logger logger = LoggerFactory.getLogger(WechatDefaultDispatcherServlet.class);
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         WechatParam params = new WechatParam(request);
