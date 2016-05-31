@@ -4,9 +4,7 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-	<listener>
-		<listener-class>com.itfvck.wechatframework.core.token.TokenListener</listener-class>
-	</listener>
+
 	<context-param>
 		<param-name>webAppRootKey</param-name>
 		<param-value>www.itfvck.com</param-value>
@@ -18,9 +16,15 @@
 	<listener>
 		<listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
 	</listener>
+	<!-- token定时刷新监听器 -->
+	<listener>
+		<listener-class>com.itfvck.wechatframework.core.token.TokenListener</listener-class>
+	</listener>
 	<servlet>
 		<servlet-name>WechatframeworkServlet</servlet-name>
+		<!-- 用户可自定义消息请求入口 -->
 		<servlet-class>com.itfvck.wechatframework.web.servlet.WechatDefaultDispatcherServlet</servlet-class>
+		<!-- 用户可自定义消息处理中心，参数名必须为wechatService，此处若不配置，则会采用默认的示例消息处理中心 -->
 		<!-- <init-param> -->
 		<!-- <param-name>wechatService</param-name> -->
 		<!-- <param-value>com.itfvck.wechatframework.service.MyService</param-value> -->
