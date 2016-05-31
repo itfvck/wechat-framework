@@ -9,6 +9,12 @@ import com.itfvck.wechatframework.core.msg.Voice;
 import com.itfvck.wechatframework.core.requestMsg.WechatRequest;
 import com.itfvck.wechatframework.core.responseMsg.WechatResponse;
 
+/**
+ * 微信消息处理中心，用户可继承该类以便实现业务定制
+ * 
+ * @author
+ *
+ */
 public abstract class WechatSupport extends WechatDispatcher {
     static Logger logger = LoggerFactory.getLogger(WechatSupport.class);
 

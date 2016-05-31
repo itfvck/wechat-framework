@@ -9,6 +9,12 @@ import org.slf4j.LoggerFactory;
 import com.itfvck.wechatframework.web.service.WechatDefaultService;
 import com.itfvck.wechatframework.web.support.WechatSupport;
 
+/**
+ * 默认servlet初始化层
+ * 
+ * @author
+ *
+ */
 public abstract class WechatFrameworkServlet extends HttpServlet {
     private static Logger logger = LoggerFactory.getLogger(WechatFrameworkServlet.class);
     private static final long serialVersionUID = -3673669864159664378L;
@@ -21,6 +27,9 @@ public abstract class WechatFrameworkServlet extends HttpServlet {
         logger.info("消息处理中心服务器:" + wechat);
     }
 
+    /**
+     * 初始化微信消息处理器对象，第一步初始化自定义消息处理器，初始化失败则采用默认消息处理器
+     */
     private void initWechatServer() {
         try {
             wechat = (WechatSupport) Class.forName(this.getInitParameter(CLAZZ_NAME), true, Thread.currentThread().getContextClassLoader()).newInstance();
@@ -31,6 +40,11 @@ public abstract class WechatFrameworkServlet extends HttpServlet {
         }
     }
 
+    /**
+     * 获取消息处理器对象
+     * 
+     * @return
+     */
     public WechatSupport getWechatService() {
         return wechat;
     }

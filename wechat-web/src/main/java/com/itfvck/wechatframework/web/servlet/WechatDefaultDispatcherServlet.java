@@ -14,10 +14,19 @@ import com.itfvck.wechatframework.core.common.WechatConfig;
 import com.itfvck.wechatframework.core.common.WechatParam;
 import com.itfvck.wechatframework.core.util.SignatureUtil;
 
+/**
+ * 默认微信消息请求入口
+ * 
+ * @author
+ *
+ */
 public class WechatDefaultDispatcherServlet extends WechatFrameworkServlet {
     private static final long serialVersionUID = -9199915074190263799L;
     static Logger logger = LoggerFactory.getLogger(WechatDefaultDispatcherServlet.class);
 
+    /**
+     * 微信接入验证请求入口
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         WechatParam params = new WechatParam(request);
         logger.info("GET params：" + params.toString());
@@ -42,6 +51,9 @@ public class WechatDefaultDispatcherServlet extends WechatFrameworkServlet {
         }
     }
 
+    /**
+     * 微信消息接收入口
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         WechatParam params = new WechatParam(request);
         logger.info("POST params：" + params.toString());

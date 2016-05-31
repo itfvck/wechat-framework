@@ -5,6 +5,12 @@ import org.slf4j.LoggerFactory;
 
 import com.itfvck.wechatframework.web.support.WechatSupport;
 
+/**
+ * 微信默认消息处理中心
+ * 
+ * @author lidong
+ *
+ */
 public class WechatDefaultService extends WechatSupport {
     static Logger logger = LoggerFactory.getLogger(WechatDefaultService.class);
 

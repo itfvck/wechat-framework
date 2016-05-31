@@ -12,8 +12,23 @@ import com.itfvck.wechatframework.core.requestMsg.WechatRequest;
 import com.itfvck.wechatframework.core.responseMsg.WechatResponse;
 import com.itfvck.wechatframework.core.util.XmlHelper;
 
+/**
+ * 微信服务器与用户消息转发控制中心
+ * 
+ * @author
+ *
+ */
 abstract class WechatDispatcher {
 
+    /**
+     * 微信服务器消息入口
+     * 
+     * @param request
+     * @param conf
+     * @param params
+     * @return 返回处理后的消息
+     * @throws Exception
+     */
     public String service(HttpServletRequest request, WechatConfig conf, WechatParam params) throws Exception {
         WechatRequest wechatRequest = XmlHelper.toObj(XmlHelper.parseXml(request, conf, params));
         String xml = null;
@@ -31,16 +46,11 @@ abstract class WechatDispatcher {
     }
 
     /**
-     * @Description 普通消息分发
-     * @param requestMap
-     * @param baseConf
-     * @param params
+     * 普通消息分发中心
+     * 
+     * @param wechatRequest
      * @return
      * @throws Exception
-     * @CreationDate 2016年5月28日 下午1:29:02
-     * @Author itfvck(itfvck@itfvck.com)
-     * @UpdateDate
-     * @UpdateAuthor
      */
     private String dispatchMessage(WechatRequest wechatRequest) throws Exception {
         // 消息类型
@@ -76,15 +86,11 @@ abstract class WechatDispatcher {
     }
 
     /**
-     * @Description 事件消息分发
+     * 事件消息分发中心
+     * 
      * @param wechatRequest
-     * @param baseConf
-     * @param params
      * @return
-     * @CreationDate 2016年5月28日 下午1:29:14
-     * @Author itfvck(itfvck@itfvck.com)
-     * @UpdateDate
-     * @UpdateAuthor
+     * @throws Exception
      */
     private String dispatchEvent(WechatRequest wechatRequest) throws Exception {
         // 事件推送
@@ -148,22 +154,23 @@ abstract class WechatDispatcher {
     }
 
     /**
-     * @Description 获取微信消息的请求消息对象
+     * 将返回消息对象格式化为微信服务器所需要的XML格式字符串
+     * 
      * @param wechatRequest
-     * @param baseConf
-     * @param params
-     * @return WechatRequest 请求消息对象
-     * @see WechatRequest 请求消息对象
-     * @throws Exception
-     * @CreationDate 2016年5月29日 上午12:49:03
-     * @Author itfvck(itfvck@itfvck.com)
-     * @UpdateDate
-     * @UpdateAuthor
+     * @param wechatResponse
+     * @return
      */
     protected String formatWechatResponse(WechatRequest wechatRequest, WechatResponse wechatResponse) {
         return XmlHelper.toXML(setWechatResponseBase(wechatRequest, wechatResponse));
     }
 
+    /**
+     * 设置返回消息对象的基础数据
+     * 
+     * @param wechatRequest
+     * @param response
+     * @return
+     */
     private WechatResponse setWechatResponseBase(WechatRequest wechatRequest, WechatResponse response) {
         // 发送方帐号, 公告号将要向该号发送回复消息
         // 开发者微信帐号
