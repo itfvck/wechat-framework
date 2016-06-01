@@ -29,7 +29,7 @@ public abstract class WechatSupport extends WechatDispatcher {
             WechatResponse wechatResponse = new WechatResponse();
             wechatResponse.setContent("文本回复：" + content);
             wechatResponse.setMsgType(MsgType.text.name());
-            xml = formatWechatResponse(wechatRequest, wechatResponse);
+            xml = getWechatResponse(wechatRequest, wechatResponse);
             logger.info("WechatResponse：", wechatResponse.toString());
             logger.info("onText Xml：", xml);
         }
@@ -43,7 +43,7 @@ public abstract class WechatSupport extends WechatDispatcher {
         WechatResponse wechatResponse = new WechatResponse();
         wechatResponse.setMsgType(MsgType.image.name());
         wechatResponse.setImage(new Image(wechatRequest.getMediaId()));
-        xml = formatWechatResponse(wechatRequest, wechatResponse);
+        xml = getWechatResponse(wechatRequest, wechatResponse);
         logger.info("WechatResponse：", wechatResponse.toString());
         logger.info("onImage Xml：", xml);
         return xml;
@@ -56,7 +56,7 @@ public abstract class WechatSupport extends WechatDispatcher {
         WechatResponse wechatResponse = new WechatResponse();
         wechatResponse.setMsgType(MsgType.voice.name());
         wechatResponse.setVoice(new Voice(wechatRequest.getMediaId()));
-        xml = formatWechatResponse(wechatRequest, wechatResponse);
+        xml = getWechatResponse(wechatRequest, wechatResponse);
         logger.info("WechatResponse：", wechatResponse.toString());
         logger.info("onVoice Xml：", xml);
         return xml;
@@ -69,7 +69,7 @@ public abstract class WechatSupport extends WechatDispatcher {
         WechatResponse wechatResponse = new WechatResponse();
         wechatResponse.setContent("视频消息回复：" + wechatRequest.getMediaId() + "," + wechatRequest.getThumbMediaId());
         wechatResponse.setMsgType(MsgType.video.name());
-        xml = formatWechatResponse(wechatRequest, wechatResponse);
+        xml = getWechatResponse(wechatRequest, wechatResponse);
         logger.info("WechatResponse：", wechatResponse.toString());
         logger.info("onVideo Xml：", xml);
         return xml;
@@ -82,7 +82,7 @@ public abstract class WechatSupport extends WechatDispatcher {
         WechatResponse wechatResponse = new WechatResponse();
         wechatResponse.setContent("小视频消息回复：" + wechatRequest.getMediaId() + "," + wechatRequest.getThumbMediaId());
         wechatResponse.setMsgType(MsgType.text.name());
-        xml = formatWechatResponse(wechatRequest, wechatResponse);
+        xml = getWechatResponse(wechatRequest, wechatResponse);
         logger.info("WechatResponse：", wechatResponse.toString());
         logger.info("onShortVideo Xml：", xml);
         return xml;
@@ -95,7 +95,7 @@ public abstract class WechatSupport extends WechatDispatcher {
         WechatResponse wechatResponse = new WechatResponse();
         wechatResponse.setContent("地理位置消息回复：" + wechatRequest.getLabel());
         wechatResponse.setMsgType(MsgType.text.name());
-        xml = formatWechatResponse(wechatRequest, wechatResponse);
+        xml = getWechatResponse(wechatRequest, wechatResponse);
         logger.info("WechatResponse：", wechatResponse.toString());
         logger.info("onLocation Xml：", xml);
         return xml;
@@ -108,7 +108,7 @@ public abstract class WechatSupport extends WechatDispatcher {
         WechatResponse wechatResponse = new WechatResponse();
         wechatResponse.setContent("链接消息回复：" + String.format("<a href='%s'>%s</a>", wechatRequest.getUrl(), wechatRequest.getTitle()));
         wechatResponse.setMsgType(MsgType.text.name());
-        xml = formatWechatResponse(wechatRequest, wechatResponse);
+        xml = getWechatResponse(wechatRequest, wechatResponse);
         logger.info("WechatResponse：", wechatResponse.toString());
         logger.info("onLocation Xml：", xml);
         return xml;
@@ -121,7 +121,7 @@ public abstract class WechatSupport extends WechatDispatcher {
         WechatResponse wechatResponse = new WechatResponse();
         wechatResponse.setContent("未知消息回复：不知名消息,例如：聊天表情、个性名片、收藏、未知文件等");
         wechatResponse.setMsgType(MsgType.text.name());
-        xml = formatWechatResponse(wechatRequest, wechatResponse);
+        xml = getWechatResponse(wechatRequest, wechatResponse);
         logger.info("WechatResponse：", wechatResponse.toString());
         logger.info("onUnknown Xml：", xml);
         return xml;
@@ -140,7 +140,7 @@ public abstract class WechatSupport extends WechatDispatcher {
         WechatResponse wechatResponse = new WechatResponse();
         wechatResponse.setContent("关注事件消息回复：欢迎关注");
         wechatResponse.setMsgType(MsgType.text.name());
-        xml = formatWechatResponse(wechatRequest, wechatResponse);
+        xml = getWechatResponse(wechatRequest, wechatResponse);
         logger.info("WechatResponse：", wechatResponse.toString());
         logger.info("onLocation Xml：", xml);
         return xml;
@@ -153,7 +153,7 @@ public abstract class WechatSupport extends WechatDispatcher {
         WechatResponse wechatResponse = new WechatResponse();
         wechatResponse.setContent("取消关注事件消息回复：取消关注");
         wechatResponse.setMsgType(MsgType.text.name());
-        xml = formatWechatResponse(wechatRequest, wechatResponse);
+        xml = getWechatResponse(wechatRequest, wechatResponse);
         logger.info("WechatResponse：", wechatResponse.toString());
         logger.info("onLocation Xml：", xml);
         return xml;

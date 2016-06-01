@@ -160,7 +160,7 @@ abstract class WechatDispatcher {
      * @param wechatResponse
      * @return
      */
-    protected String formatWechatResponse(WechatRequest wechatRequest, WechatResponse wechatResponse) {
+    protected String getWechatResponse(WechatRequest wechatRequest, WechatResponse wechatResponse) {
         return XmlHelper.toXML(setWechatResponseBase(wechatRequest, wechatResponse));
     }
 
