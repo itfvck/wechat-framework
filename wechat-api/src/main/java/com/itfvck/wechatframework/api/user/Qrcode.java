@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.net.URLEncoder;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.itfvck.wechatframework.core.util.HttpUtils;
+import com.itfvck.wechatframework.core.util.http.HttpUtils;
 
 /**
  * 二维码

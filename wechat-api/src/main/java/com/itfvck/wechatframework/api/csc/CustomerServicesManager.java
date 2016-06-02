@@ -11,8 +11,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itfvck.wechatframework.core.exception.WeChatException;
 import com.itfvck.wechatframework.core.token.TokenProxy;
-import com.itfvck.wechatframework.core.util.HttpUtils;
 import com.itfvck.wechatframework.core.util.WeChatUtil;
+import com.itfvck.wechatframework.core.util.http.HttpUtils;
 /**
  * 客服管理
  * @author Zhangxs

@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONObject;
-import com.itfvck.wechatframework.core.util.HttpUtils;
+import com.itfvck.wechatframework.core.util.http.HttpUtils;
 
 /**
  * @author ChengNing

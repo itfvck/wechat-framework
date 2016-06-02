@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.itfvck.wechatframework.core.token.server.AccessTokenServer;
-import com.itfvck.wechatframework.core.util.HttpUtils;
+import com.itfvck.wechatframework.core.util.http.HttpUtils;
 
 /**
  * @author ChengNing

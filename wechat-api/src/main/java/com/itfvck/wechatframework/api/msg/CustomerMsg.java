@@ -18,7 +18,7 @@ import com.itfvck.wechatframework.core.msg.ArticleResponse;
 import com.itfvck.wechatframework.core.msg.MusicResponse;
 import com.itfvck.wechatframework.core.msg.VideoResponse;
 import com.itfvck.wechatframework.core.token.TokenProxy;
-import com.itfvck.wechatframework.core.util.HttpUtils;
+import com.itfvck.wechatframework.core.util.http.HttpUtils;
 
 /**
  * 发送客服消息

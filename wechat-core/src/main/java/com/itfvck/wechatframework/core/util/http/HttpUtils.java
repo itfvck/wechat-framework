@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.itfvck.wechatframework.core.util;
+package com.itfvck.wechatframework.core.util.http;
 
 import java.io.File;
 import java.io.InputStream;

@@ -11,7 +11,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.itfvck.wechatframework.api.msg.template.TemplateMsgBody;
 import com.itfvck.wechatframework.api.msg.template.TemplateMsgData;
 import com.itfvck.wechatframework.core.token.TokenProxy;
-import com.itfvck.wechatframework.core.util.HttpUtils;
+import com.itfvck.wechatframework.core.util.http.HttpUtils;
 
 /**
  * 模板消息接口

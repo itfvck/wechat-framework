@@ -33,7 +33,7 @@ public abstract class WechatFrameworkServlet extends HttpServlet {
     private void initWechatServer() {
         try {
             wechat = (WechatSupport) Class.forName(this.getInitParameter(CLAZZ_NAME), true, Thread.currentThread().getContextClassLoader()).newInstance();
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+        } catch (Exception e) {
             logger.info("自定义微信消息处理中心服务器初始化失败,转入默认消息处理器初始化");
             wechat = WechatDefaultService.instance();
             logger.info("默认消息处理器初始化完成");
