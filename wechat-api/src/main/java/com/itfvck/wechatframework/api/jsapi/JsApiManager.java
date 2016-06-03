@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.itfvck.wechatframework.core.token.TokenProxy;
+import com.itfvck.wechatframework.core.util.EncryptUtil;
 import com.itfvck.wechatframework.core.util.RandomStringGenerator;
 
 /**
@@ -34,7 +35,8 @@ public class JsApiManager {
         signatureSource.append("&timestamp=").append(timestamp);
         signatureSource.append("&url=").append(url);
         logger.info("sign source : " + signatureSource);
-        String signature = DigestUtils.sha1Hex(signatureSource.toString());
+//        EncryptUtil.SHA1Encrypt(signatureSource.toString());
+        String signature =EncryptUtil.SHA1Encrypt(signatureSource.toString());// DigestUtils.sha1Hex(signatureSource.toString());
         logger.info("sign : " + signature);
         return new JsApiParam(url, jsapiTicket, nonceStr, timestamp, signature);
     }

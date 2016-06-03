@@ -21,7 +21,7 @@ import com.itfvck.wechatframework.core.util.http.HttpUtils;
  */
 public class UserManager {
 
-    Logger logger = LoggerFactory.getLogger(UserManager.class);
+    static Logger logger = LoggerFactory.getLogger(UserManager.class);
     // 获取用户列表
     private static final String USRE_GET_URL = "https://api.weixin.qq.com/cgi-bin/user/get?access_token=";
     // 设置用户备注名
@@ -48,7 +48,7 @@ public class UserManager {
      * 
      * @return
      */
-    public List<String> allSubscriber() {
+    public static List<String> allSubscriber() {
         Follwers follwers = subscriberList();
         String nextOpenId = follwers.getNextOpenid();
         while (StringUtils.isNotBlank(nextOpenId)) {
@@ -66,7 +66,7 @@ public class UserManager {
      * 
      * @return
      */
-    public Follwers subscriberList() {
+    public static Follwers subscriberList() {
         return subscriberList(null);
     }
 
@@ -76,7 +76,7 @@ public class UserManager {
      * @param nextOpenId
      * @return
      */
-    public Follwers subscriberList(String nextOpenId) {
+    public static Follwers subscriberList(String nextOpenId) {
         String url = USRE_GET_URL + TokenProxy.accessToken();
         if (StringUtils.isNotBlank(nextOpenId)) {
             url += "&next_openid=" + nextOpenId;
@@ -103,7 +103,7 @@ public class UserManager {
      * @return
      * @throws WeChatException
      */
-    public void updateRemark(String openId, String remark) throws WeChatException {
+    public static void updateRemark(String openId, String remark) throws WeChatException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("openid", openId);
         jsonObject.put("remark", remark);
@@ -121,7 +121,7 @@ public class UserManager {
      *            普通用户的标识，对当前公众号唯一
      * @return
      */
-    public User getUserInfo(String openId) {
+    public static User getUserInfo(String openId) {
         return getUserInfo(openId, null);
     }
 
@@ -134,7 +134,7 @@ public class UserManager {
      *            返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语
      * @return
      */
-    public User getUserInfo(String openId, LanguageType lang) {
+    public static User getUserInfo(String openId, LanguageType lang) {
         String url = USER_INFO_GET_URL + TokenProxy.accessToken() + "&openid=" + openId;
         if (lang != null) {
             url += "&lang=" + lang.name();
@@ -160,7 +160,7 @@ public class UserManager {
      * @return
      * @throws WeChatException
      */
-    public Group createGroup(String name) throws WeChatException {
+    public static Group createGroup(String name) throws WeChatException {
         JSONObject nameJson = new JSONObject();
         JSONObject groupJson = new JSONObject();
         nameJson.put("name", name);
@@ -178,7 +178,7 @@ public class UserManager {
      * 
      * @return
      */
-    public List<Group> getGroup() {
+    public static List<Group> getGroup() {
         String resultStr = HttpUtils.post(GROUP_GET_POST_URL + TokenProxy.accessToken());
         logger.info("return data " + resultStr);
         try {
@@ -200,7 +200,7 @@ public class UserManager {
      *            用户的OpenID
      * @return 用户所属的groupid
      */
-    public Integer getIdGroup(String openId) {
+    public static Integer getIdGroup(String openId) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("openid", openId);
 
@@ -229,7 +229,7 @@ public class UserManager {
      *            分组名称
      * @throws WeChatException
      */
-    public void updateGroup(int groupId, String name) throws WeChatException {
+    public static void updateGroup(int groupId, String name) throws WeChatException {
         JSONObject nameJson = new JSONObject();
         JSONObject groupJson = new JSONObject();
         nameJson.put("id", groupId);
@@ -251,7 +251,7 @@ public class UserManager {
      *            分组id
      * @throws WeChatException
      */
-    public void membersUpdateGroup(String openId, int groupId) throws WeChatException {
+    public static void membersUpdateGroup(String openId, int groupId) throws WeChatException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("openid", openId);
         jsonObject.put("to_groupid", groupId);
@@ -272,7 +272,7 @@ public class UserManager {
      * @return 是否修改成功
      * @throws WeChatException
      */
-    public void membersDatchUpdateGroup(String[] openIds, int groupId) throws WeChatException {
+    public static void membersDatchUpdateGroup(String[] openIds, int groupId) throws WeChatException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("openid_list", openIds);
         jsonObject.put("to_groupid", groupId);
@@ -289,7 +289,7 @@ public class UserManager {
      * @param groupId
      * @throws WeChatException
      */
-    public void deleteGroup(int groupId) throws WeChatException {
+    public static void deleteGroup(int groupId) throws WeChatException {
         JSONObject idJson = new JSONObject();
         idJson.put("id", groupId);
         JSONObject groupJson = new JSONObject();

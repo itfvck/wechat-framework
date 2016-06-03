@@ -9,6 +9,7 @@ public class WechatRequest {
     private String Event;// 事件类型，subscribe(订阅)、unsubscribe(取消订阅)|SCAN扫描带参数二维码事件|LOCATION上报地理位置事件|CLICK自定义菜单事件|VIEW
     private String EventKey;// 事件KEY值，qrscene_为前缀，后面为二维码的参数值|事件KEY值，与自定义菜单接口中KEY值对应|事件KEY值，设置的跳转URL
     private String MsgId;// 消息id，64位整型
+    private String MenuId;//菜单ID
     private String Content;// 文本消息内容
     private String Location_X;// 地理位置维度
     private String Location_Y;// 地理位置经度
@@ -273,14 +274,22 @@ public class WechatRequest {
         Recognition = recognition;
     }
 
+    public String getMenuId() {
+        return MenuId;
+    }
+
+    public void setMenuId(String menuId) {
+        MenuId = menuId;
+    }
+
     @Override
     public String toString() {
         return "WechatRequest [ToUserName=" + ToUserName + ", FromUserName=" + FromUserName + ", CreateTime=" + CreateTime + ", MsgType=" + MsgType + ", Event=" + Event
-                + ", EventKey=" + EventKey + ", MsgId=" + MsgId + ", Content=" + Content + ", Location_X=" + Location_X + ", Location_Y=" + Location_Y + ", Scale=" + Scale
-                + ", Label=" + Label + ", Title=" + Title + ", Description=" + Description + ", Url=" + Url + ", PicUrl=" + PicUrl + ", MediaId=" + MediaId + ", Format=" + Format
-                + ", Status=" + Status + ", Latitude=" + Latitude + ", Longitude=" + Longitude + ", Precision=" + Precision + ", Ticket=" + Ticket + ", ThumbMediaId="
-                + ThumbMediaId + ", ScanType=" + ScanType + ", ScanResult=" + ScanResult + ", Count=" + Count + ", item=" + item + ", Poiname=" + Poiname + ", Recognition="
-                + Recognition + "]";
+                + ", EventKey=" + EventKey + ", MsgId=" + MsgId + ", MenuId=" + MenuId + ", Content=" + Content + ", Location_X=" + Location_X + ", Location_Y=" + Location_Y
+                + ", Scale=" + Scale + ", Label=" + Label + ", Title=" + Title + ", Description=" + Description + ", Url=" + Url + ", PicUrl=" + PicUrl + ", MediaId=" + MediaId
+                + ", Format=" + Format + ", Status=" + Status + ", Latitude=" + Latitude + ", Longitude=" + Longitude + ", Precision=" + Precision + ", Ticket=" + Ticket
+                + ", ThumbMediaId=" + ThumbMediaId + ", ScanType=" + ScanType + ", ScanResult=" + ScanResult + ", Count=" + Count + ", item=" + item + ", Poiname=" + Poiname
+                + ", Recognition=" + Recognition + "]";
     }
 
 }
