@@ -1,15 +1,11 @@
-/**
- * 
- */
 package com.itfvck.wechatframework.api.material;
 
 /**
- * @author ChengNing
- * @date   2015年1月26日
+ * 素材类型
+ * 
+ * @author vcdemon
+ *
  */
 public enum MediaType {
-	image,
-	voice,
-	video,
-	thumb
+	image, voice, video, thumb, news;
 }
