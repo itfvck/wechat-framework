@@ -2,6 +2,8 @@
 
 ### 近日更新：
 
+#### ``wechat-api``模块新增素材管理类``MaterialManager``，根据官方文档更新为最新的素材管理API。
+
 #### [JS-SDK授权验证](https://github.com/vcdemon/wechat-framework/wiki/9-JS-SDK%E9%AA%8C%E8%AF%81%E4%BB%A3%E7%A0%81)
 #### [微信本地开发环境搭建](https://github.com/vcdemon/wechat-framework/wiki/8-%E5%BE%AE%E4%BF%A1%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
 
