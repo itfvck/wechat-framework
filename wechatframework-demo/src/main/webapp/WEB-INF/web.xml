@@ -16,10 +16,6 @@
 	<listener>
 		<listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
 	</listener>
-	<!-- token定时刷新监听器 -->
-	<listener>
-		<listener-class>com.itfvck.wechatframework.core.token.TokenListener</listener-class>
-	</listener>
 	<servlet>
 		<servlet-name>WechatframeworkServlet</servlet-name>
 		<!-- 用户可自定义消息请求入口 -->
