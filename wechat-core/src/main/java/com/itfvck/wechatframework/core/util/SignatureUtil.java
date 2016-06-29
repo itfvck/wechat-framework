@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.itfvck.wechatframework.core.common.WechatConfig;
+import com.itfvck.wechatframework.core.common.BaseParams;
 import com.itfvck.wechatframework.core.common.WechatParam;
 
 public class SignatureUtil {
@@ -19,7 +19,7 @@ public class SignatureUtil {
      * @param nonce
      * @return
      */
-    public static boolean checkSignature(WechatParam params, WechatConfig conf) {
+    public static boolean checkSignature(WechatParam params, BaseParams conf) {
         String[] arr = new String[] { conf.getToken(), params.getTimestamp(), params.getNonce() };
         // 将token、timestamp、nonce三个参数进行字典序排序
         Arrays.sort(arr);

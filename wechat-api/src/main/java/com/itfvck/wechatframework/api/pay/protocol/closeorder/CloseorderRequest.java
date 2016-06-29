@@ -1,7 +1,5 @@
 package com.itfvck.wechatframework.api.pay.protocol.closeorder;
 
-import com.itfvck.wechatframework.core.common.WechatConfig;
-
 /**
  * 关闭订单请求对象
  * <p>
@@ -12,8 +10,8 @@ import com.itfvck.wechatframework.core.common.WechatConfig;
  */
 public class CloseorderRequest {
 
-    private String appid = WechatConfig.instance().getAppid();
-    private String mch_id = WechatConfig.instance().getMchId();
+    private String appid ;
+    private String mch_id ;
     private String out_trade_no;
     private String nonce_str;
     private String sign;
