@@ -42,11 +42,6 @@
 			<artifactId>xstream</artifactId>
 			<version>1.4.9</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>commons-httpclient</groupId> -->
-		<!-- <artifactId>commons-httpclient</artifactId> -->
-		<!-- <version>3.1</version> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -122,20 +117,20 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-	<distributionManagement>
-		<repository>
-			<id>my-nexus-releases</id>
-			<url>
-			http://10.17.1.176:8081/nexus/content/repositories/releases/
-			</url>
-		</repository>
-		<snapshotRepository>
-			<id>my-nexus-snapshot</id>
-			<url>
-				http://10.17.1.176:8081/nexus/content/repositories/snapshots/
-			</url>
-		</snapshotRepository>
-	</distributionManagement>
+<!-- 	<distributionManagement> -->
+<!-- 		<repository> -->
+<!-- 			<id>my-nexus-releases</id> -->
+<!-- 			<url> -->
+<!-- 			http://10.17.1.176:8081/nexus/content/repositories/releases/ -->
+<!-- 			</url> -->
+<!-- 		</repository> -->
+<!-- 		<snapshotRepository> -->
+<!-- 			<id>my-nexus-snapshot</id> -->
+<!-- 			<url> -->
+<!-- 				http://10.17.1.176:8081/nexus/content/repositories/snapshots/ -->
+<!-- 			</url> -->
+<!-- 		</snapshotRepository> -->
+<!-- 	</distributionManagement> -->
 	<build>
 		<plugins>
 			<plugin>
