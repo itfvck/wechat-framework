@@ -10,7 +10,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>3.2.17.RELEASE</spring.version>
-		<wechat.version>1.0.0</wechat.version>
+		<wechat.version>1.0.2</wechat.version>
 	</properties>
 	<dependencies>
 		<dependency>

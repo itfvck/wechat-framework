@@ -4,13 +4,13 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="wechat-core-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/wechat-core/wechat-core">
+        <dependent-module archiveName="wechat-core-1.0.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/wechat-core/wechat-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="wechat-api-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/wechat-api/wechat-api">
+        <dependent-module archiveName="wechat-api-1.0.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/wechat-api/wechat-api">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="wechat-web-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/wechat-web/wechat-web">
+        <dependent-module archiveName="wechat-web-1.0.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/wechat-web/wechat-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="wechatframework-demo"/>

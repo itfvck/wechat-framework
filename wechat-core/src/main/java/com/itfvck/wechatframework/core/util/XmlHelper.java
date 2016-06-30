@@ -40,7 +40,8 @@ public class XmlHelper {
 		if (WechatCommonConst.AES.getValue().equals(params.getEncrypt_type())) {
 			// 将加密的XML转换为明文XML
 			logger.info("parseXml接收到的安全模式消息微信消息" + document.asXML());
-			document = DocumentHelper.parseText(new WXBizMsgCrypt(conf).decryptMsg(params, document.asXML()));
+			WXBizMsgCrypt wxBizMsgCrypt = new WXBizMsgCrypt(conf.getToken(), conf.getEncodingAESKey(), conf.getAppId());
+			document = DocumentHelper.parseText(wxBizMsgCrypt.decryptMsg(params.getMsg_signature(), params.getTimestamp(), params.getNonce(), document.asXML()));
 		}
 		logger.info("parseXml接收到的微信消息" + document.asXML());
 		return document.asXML();
@@ -62,8 +63,7 @@ public class XmlHelper {
 	}
 
 	/**
-	 * 将WechatResponse对象转换为XML格式的字符串，"xml"作为根节点，"item"作为ArticleResponse根节点，
-	 * 其他节点为对象字段
+	 * 将WechatResponse对象转换为XML格式的字符串，"xml"作为根节点，"item"作为ArticleResponse根节点， 其他节点为对象字段
 	 * 
 	 * @param response
 	 *            将要返回给微信服务器的消息对象

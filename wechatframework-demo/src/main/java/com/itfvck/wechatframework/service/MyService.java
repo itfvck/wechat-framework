@@ -1,5 +1,7 @@
 package com.itfvck.wechatframework.service;
 
+import org.springframework.stereotype.Service;
+
 import com.itfvck.wechatframework.core.support.WechatSupport;
 
 /**
@@ -8,6 +10,7 @@ import com.itfvck.wechatframework.core.support.WechatSupport;
  * @author
  *
  */
+@Service("wechatService")
 public class MyService extends WechatSupport {
 
 }

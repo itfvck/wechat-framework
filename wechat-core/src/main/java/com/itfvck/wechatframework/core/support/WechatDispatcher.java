@@ -29,20 +29,32 @@ abstract class WechatDispatcher {
 	 * @return 返回处理后的消息
 	 * @throws Exception
 	 */
-	public String service(HttpServletRequest request, BaseParams conf, WechatParam params) throws Exception {
-		WechatRequest wechatRequest = XmlHelper.toObj(XmlHelper.parseXml(request, conf, params));
-		String xml = null;
-		// 消息类型
-		switch (MsgType.valueOf(wechatRequest.getMsgType())) {
-		case event:
-			xml = dispatchEvent(wechatRequest);
-			break;
-		default:
-			xml = dispatchMessage(wechatRequest);
-			break;
+	public String service(HttpServletRequest request, BaseParams conf, WechatParam params) {
+		WechatRequest wechatRequest;
+		try {
+			wechatRequest = XmlHelper.toObj(XmlHelper.parseXml(request, conf, params));
+			String xml = null;
+			// 消息类型
+			switch (MsgType.valueOf(wechatRequest.getMsgType())) {
+			case event:
+				xml = dispatchEvent(wechatRequest);
+				break;
+			default:
+				xml = dispatchMessage(wechatRequest);
+				break;
+			}
+
+			if (WechatCommonConst.AES.getValue().equals(params.getEncrypt_type())) {
+				WXBizMsgCrypt wxBizMsgCrypt = new WXBizMsgCrypt(conf.getToken(), conf.getEncodingAESKey(), conf.getAppId());
+				return wxBizMsgCrypt.encryptMsg(xml, params.getTimestamp(), params.getNonce());
+			} else {
+				return xml;
+			}
+			// 加密
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		// 加密
-		return WechatCommonConst.AES.getValue().equals(params.getEncrypt_type()) ? new WXBizMsgCrypt(conf).encryptMsg(xml, params) : xml;
+		return WechatCommonConst.SERVICE_ERROR.getValue();
 	}
 
 	/**

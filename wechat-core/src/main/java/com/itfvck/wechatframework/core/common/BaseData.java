@@ -14,6 +14,7 @@ public class BaseData implements Serializable {
 	private static final long serialVersionUID = 5740770864577790852L;
 	private String appId;// 应用ID,公众号的唯一标识;
 	private String appSecret;// 应用密钥,公众号的appsecret
+	private String ghId;
 	private String access_token;// 接口调用凭证
 	private long expires_in;// access_token接口调用凭证超时时间，单位（秒）
 	private String refresh_token;// 用户刷新access_token
@@ -23,6 +24,14 @@ public class BaseData implements Serializable {
 	private String openid; // 用户唯一标识，请注意，在未关注公众号时，用户访问公众号的网页，也会产生一个用户和公众号唯一的OpenID
 
 	private List<String> ip_list;
+
+	public String getGhId() {
+		return ghId;
+	}
+
+	public void setGhId(String ghId) {
+		this.ghId = ghId;
+	}
 
 	public List<String> getIp_list() {
 		return ip_list;
@@ -99,7 +108,7 @@ public class BaseData implements Serializable {
 	@Override
 	public String toString() {
 		return "BaseData [appId=" + appId + ", appSecret=" + appSecret + ", access_token=" + access_token + ", expires_in=" + expires_in + ", refresh_token=" + refresh_token
-		        + ", errcode=" + errcode + ", errmsg=" + errmsg + ", openid=" + openid + ", ip_list=" + ip_list + "]";
+				+ ", errcode=" + errcode + ", errmsg=" + errmsg + ", openid=" + openid + ", ip_list=" + ip_list + "]";
 	}
 
 	public void showMsg() {

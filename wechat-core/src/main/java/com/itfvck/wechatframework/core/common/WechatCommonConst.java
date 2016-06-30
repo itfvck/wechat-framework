@@ -1,15 +1,15 @@
 package com.itfvck.wechatframework.core.common;
 
 public enum WechatCommonConst {
-    AES("aes");
+	AES("aes"),
+	SERVICE_ERROR("error");
+	private String value;
 
-    private final String value;
+	private WechatCommonConst(String value) {
+		this.value = value;
+	}
 
-    private WechatCommonConst(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return this.value;
-    }
+	public String getValue() {
+		return this.value;
+	}
 }

@@ -10,8 +10,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-import com.itfvck.wechatframework.core.common.BaseParams;
-import com.itfvck.wechatframework.core.common.WechatParam;
 import com.itfvck.wechatframework.core.mp.WXBizMsgCrypt;
 
 public class Program {
@@ -29,12 +27,9 @@ public class Program {
 		String nonce = "xxxxxx";
 		String appId = "wxb11529c136998cb6";
 		String replyMsg = " 中文<xml><ToUserName><![CDATA[oia2TjjewbmiOUlr6X-1crbLOvLw]]></ToUserName><FromUserName><![CDATA[gh_7f083739789a]]></FromUserName><CreateTime>1407743423</CreateTime><MsgType><![CDATA[video]]></MsgType><Video><MediaId><![CDATA[eYJ1MbwPRJtOvIEabaxHs7TX2D-HV71s79GUxqdUkjm6Gs2Ed1KF3ulAOA9H1xG0]]></MediaId><Title><![CDATA[testCallBackReplyVideo]]></Title><Description><![CDATA[testCallBackReplyVideo]]></Description></Video></xml>";
-		BaseParams baseConf = new BaseParams();
-		WXBizMsgCrypt pc = new WXBizMsgCrypt(baseConf);
-		WechatParam params = new WechatParam();
-		params.setTimestamp(timestamp);
-		params.setNonce(nonce);
-		String mingwen = pc.encryptMsg(replyMsg, params);
+
+		WXBizMsgCrypt pc = new WXBizMsgCrypt(token, encodingAesKey, appId);
+		String mingwen = pc.encryptMsg(replyMsg, timestamp, nonce);
 		System.out.println("加密后: " + mingwen);
 
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -56,12 +51,11 @@ public class Program {
 		//
 		// 公众平台发送消息给第三方，第三方处理
 		//
-		params.setMsg_signature(msgSignature);
-		params.setTimestamp(timestamp);
-		params.setNonce(nonce);
+
 		// 第三方收到公众号平台发送的消息
-		String result2 = pc.decryptMsg(params, fromXML);
+		String result2 = pc.decryptMsg(msgSignature, timestamp, nonce, fromXML);
 		System.out.println("解密后明文: " + result2);
-		// pc.verifyUrl(null, null, null, null);
+		
+		//pc.verifyUrl(null, null, null, null);
 	}
 }
