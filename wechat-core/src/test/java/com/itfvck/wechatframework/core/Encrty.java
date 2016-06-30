@@ -2,8 +2,6 @@ package com.itfvck.wechatframework.core;
 
 import org.junit.Test;
 
-import com.itfvck.wechatframework.core.common.BaseParams;
-import com.itfvck.wechatframework.core.common.WechatParam;
 import com.itfvck.wechatframework.core.mp.AesException;
 import com.itfvck.wechatframework.core.mp.WXBizMsgCrypt;
 
