@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<wechat.version>1.0.0</wechat.version>
+		<wechat.version>1.0.2</wechat.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<httpclient.version>4.5.2</httpclient.version>
 	</properties>
