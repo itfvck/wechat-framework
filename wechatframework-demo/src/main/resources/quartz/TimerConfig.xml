@@ -23,7 +23,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 		<property name="cronExpression">
 			<!-- <value>0 */1 * * * ?</value> --><!-- cronExpression是Spring定时器的特殊属性 -->
 
-			<value>*/10 * * * * ?</value>
+			<value>*/3 * * * * ?</value>
 		</property>
 		<property name="startDelay">
 			<value>2000</value> <!-- 容器启动后 延时 <value>XX</value>毫秒 后 定时器开始启动 -->
