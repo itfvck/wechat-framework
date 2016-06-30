@@ -2,8 +2,6 @@ package com.itfvck.wechatframework.api.pay;
 
 import javax.xml.bind.annotation.XmlElement;
 
-import com.itfvck.wechatframework.core.common.WechatConfig;
-
 /**
  * H5调起支付API的参数对象
  * <p>
@@ -13,7 +11,7 @@ import com.itfvck.wechatframework.core.common.WechatConfig;
  * Created by xuwen on 2015-12-10.
  */
 public class H5PayParam {
-    private String appid = WechatConfig.instance().getAppid();
+    private String appid ;
     private String timeStamp;
     private String nonceStr;
     private String packageWithPrepayId; // 参数名package

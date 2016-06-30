@@ -1,7 +1,5 @@
 package com.itfvck.wechatframework.api.pay.protocol.refundquery;
 
-import com.itfvck.wechatframework.core.common.WechatConfig;
-
 /**
  * 查询退款请求对象
  * <p>参考<a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_5">开发文档</p>
@@ -10,8 +8,8 @@ import com.itfvck.wechatframework.core.common.WechatConfig;
  */
 public class RefundqueryRequest {
 
-    private String appid = WechatConfig.instance().getAppid();
-    private String mch_id = WechatConfig.instance().getMchId();
+    private String appid ;
+    private String mch_id;
     private String device_info;
     private String nonce_str;
     private String sign;

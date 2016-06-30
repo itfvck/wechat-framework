@@ -4,7 +4,6 @@ import java.io.File;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.itfvck.wechatframework.core.token.TokenProxy;
 import com.itfvck.wechatframework.core.util.http.HttpUtils;
 
 /**
@@ -30,9 +29,9 @@ public class MaterialManager {
 	 * @return
 	 * @author vcdemon
 	 */
-	public static String uploadTemp(File file, MediaType type) {
+	public static String uploadTemp(File file, MediaType type, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=%s&type=%s";
-		url = String.format(url, TokenProxy.accessToken(), type.name());
+		url = String.format(url, accsee_token, type.name());
 		String result = HttpUtils.postFile(url, PARAM_FILE, file);
 		MediaFile media = parseUploadResult(result);
 		return media.getMedia_id();
@@ -46,9 +45,9 @@ public class MaterialManager {
 	 * @return
 	 * @author vcdemon
 	 */
-	public static byte[] downloadTemp(String mediaId) {
+	public static byte[] downloadTemp(String mediaId, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=%s&media_id=%s";
-		url = String.format(url, TokenProxy.accessToken(), mediaId);
+		url = String.format(url, accsee_token, mediaId);
 		byte[] fb = HttpUtils.getFile(url);
 		if (fb == null || fb.length == 0)
 			return null;
@@ -64,9 +63,9 @@ public class MaterialManager {
 	 * @return 返回的即为新增的图文消息素材的media_id。
 	 * @author vcdemon
 	 */
-	public static String uploadNews(ArticleMaterial articles) {
+	public static String uploadNews(ArticleMaterial articles, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=%s";
-		url = String.format(url, TokenProxy.accessToken());
+		url = String.format(url, accsee_token);
 		String result = HttpUtils.post(url, JSONObject.toJSONString(articles));
 		MediaFile media = parseUploadResult(result);
 		return media.getMedia_id();
@@ -85,9 +84,9 @@ public class MaterialManager {
 	 *         {"errcode":40007,"errmsg": "invalid media_id"}
 	 * @author vcdemon
 	 */
-	public static ArticleMaterial getNews(String mediaId) {
+	public static ArticleMaterial getNews(String mediaId, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=%s";
-		url = String.format(url, TokenProxy.accessToken());
+		url = String.format(url, accsee_token);
 		String result = HttpUtils.post(url, JSONObject.toJSONString(new MediaFile().setMedia_id(mediaId)));
 		ArticleMaterial material = JSON.parseObject(result, ArticleMaterial.class);
 		return material;
@@ -114,9 +113,9 @@ public class MaterialManager {
 	 *         {"errcode":40007,"errmsg":"invalid media_id"}
 	 * @author vcdemon
 	 */
-	public static ArticleMaterial getNewsList(MediaFile media) {
+	public static ArticleMaterial getNewsList(MediaFile media, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=%s";
-		url = String.format(url, TokenProxy.accessToken());
+		url = String.format(url, accsee_token);
 		media.setType(MediaType.news.name());
 		String result = HttpUtils.post(url, JSONObject.toJSONString(media));
 		ArticleMaterial material = JSON.parseObject(result, ArticleMaterial.class);
@@ -136,9 +135,9 @@ public class MaterialManager {
 	 *         { "errcode": ERRCODE, "errmsg": ERRMSG } 正确时errcode的值应为0。
 	 * @author vcdemon
 	 */
-	public static MediaFile updateNews(ArticleMaterial article) {
+	public static MediaFile updateNews(ArticleMaterial article, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/update_news?access_token=%s";
-		url = String.format(url, TokenProxy.accessToken());
+		url = String.format(url, accsee_token);
 		String result = HttpUtils.post(url, JSONObject.toJSONString(article));
 		MediaFile media = parseUploadResult(result);
 		return media;
@@ -155,9 +154,9 @@ public class MaterialManager {
 	 * @return url
 	 * @author vcdemon
 	 */
-	public static String uploadNewsImg(File file) {
+	public static String uploadNewsImg(File file, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=%s";
-		url = String.format(url, TokenProxy.accessToken());
+		url = String.format(url, accsee_token);
 		String result = HttpUtils.postFile(url, PARAM_FILE, file);
 		MediaFile media = parseUploadResult(result);
 		return media.getUrl();
@@ -170,8 +169,8 @@ public class MaterialManager {
 	 * @return MediaFile { "media_id":MEDIA_ID, "url":URL }
 	 * @author vcdemon
 	 */
-	public static MediaFile uploadPermImage(File file) {
-		return uploadPerm(file, MediaType.image);
+	public static MediaFile uploadPermImage(File file, String accsee_token) {
+		return uploadPerm(file, MediaType.image, accsee_token);
 	}
 
 	/**
@@ -181,8 +180,8 @@ public class MaterialManager {
 	 * @return { "media_id":MEDIA_ID }
 	 * @author vcdemon
 	 */
-	public static String uploadPermVoice(File file) {
-		MediaFile media = uploadPerm(file, MediaType.voice);
+	public static String uploadPermVoice(File file, String accsee_token) {
+		MediaFile media = uploadPerm(file, MediaType.voice, accsee_token);
 		return media.getMedia_id();
 	}
 
@@ -193,8 +192,8 @@ public class MaterialManager {
 	 * @return { "media_id":MEDIA_ID }
 	 * @author vcdemon
 	 */
-	public static String uploadPermThumb(File file) {
-		MediaFile media = uploadPerm(file, MediaType.thumb);
+	public static String uploadPermThumb(File file, String accsee_token) {
+		MediaFile media = uploadPerm(file, MediaType.thumb, accsee_token);
 		return media.getMedia_id();
 	}
 
@@ -205,9 +204,9 @@ public class MaterialManager {
 	 * @return { "media_id":MEDIA_ID }
 	 * @author vcdemon
 	 */
-	public String uploadPermVideo(File file, String title, String introduction) {
+	public String uploadPermVideo(File file, String title, String introduction, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=%s&type=%s&title=%s&introduction=%s";
-		url = String.format(url, TokenProxy.accessToken(), MediaType.video.name(), title, introduction);
+		url = String.format(url, accsee_token, MediaType.video.name(), title, introduction);
 		String result = HttpUtils.postFile(url, PARAM_FILE, file);
 		MediaFile media = parseUploadResult(result);
 		return media.getMedia_id();
@@ -221,9 +220,9 @@ public class MaterialManager {
 	 *            媒体文件类型，分别有图片（image）、语音（voice）、和缩略图（thumb）
 	 * @return MediaFile
 	 */
-	private static MediaFile uploadPerm(File file, MediaType type) {
+	private static MediaFile uploadPerm(File file, MediaType type, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=%s&type=%s";
-		url = String.format(url, TokenProxy.accessToken(), type.name());
+		url = String.format(url, accsee_token, type.name());
 		String result = HttpUtils.postFile(url, PARAM_FILE, file);
 		MediaFile media = parseUploadResult(result);
 		return media;
@@ -244,9 +243,9 @@ public class MaterialManager {
 	 *         {"errcode":40007,"errmsg":"invalid media_id"}
 	 * @author vcdemon
 	 */
-	public static MediaFile getPermMediaFileList(MediaFile media) {
+	public static MediaFile getPermMediaFileList(MediaFile media, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=%s";
-		url = String.format(url, TokenProxy.accessToken());
+		url = String.format(url, accsee_token);
 		media.setType(MediaType.news.name());
 		String result = HttpUtils.post(url, JSONObject.toJSONString(media));
 		MediaFile material = JSON.parseObject(result, MediaFile.class);
@@ -261,9 +260,9 @@ public class MaterialManager {
 	 *         { "title":TITLE, "description":DESCRIPTION, "down_url":DOWN_URL,}
 	 * @author vcdemon
 	 */
-	public static MediaFile getVedio(String mediaId) {
+	public static MediaFile getVedio(String mediaId, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=%s";
-		url = String.format(url, TokenProxy.accessToken());
+		url = String.format(url, accsee_token);
 		String result = HttpUtils.post(url, JSONObject.toJSONString(new MediaFile().setMedia_id(mediaId)));
 		MediaFile media = parseUploadResult(result);
 		return media;
@@ -278,9 +277,9 @@ public class MaterialManager {
 	 *         "system error"}
 	 * @author vcdemon
 	 */
-	public static MediaFile getMaterialCount() {
+	public static MediaFile getMaterialCount(String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=%s";
-		url = String.format(url, TokenProxy.accessToken());
+		url = String.format(url, accsee_token);
 		String result = HttpUtils.get(url);
 		MediaFile media = parseUploadResult(result);
 		return media;
@@ -293,8 +292,8 @@ public class MaterialManager {
 	 * @return
 	 * @author vcdemon
 	 */
-	public static byte[] downloadPermImage(String mediaId) {
-		return downloadPerm(mediaId);
+	public static byte[] downloadPermImage(String mediaId, String accsee_token) {
+		return downloadPerm(mediaId, accsee_token);
 	}
 
 	/**
@@ -304,8 +303,8 @@ public class MaterialManager {
 	 * @return
 	 * @author vcdemon
 	 */
-	public static byte[] downloadPermVoice(String mediaId) {
-		return downloadPerm(mediaId);
+	public static byte[] downloadPermVoice(String mediaId, String accsee_token) {
+		return downloadPerm(mediaId, accsee_token);
 	}
 
 	/**
@@ -315,8 +314,8 @@ public class MaterialManager {
 	 * @return
 	 * @author vcdemon
 	 */
-	public static byte[] downloadPermThumb(String mediaId) {
-		return downloadPerm(mediaId);
+	public static byte[] downloadPermThumb(String mediaId, String accsee_token) {
+		return downloadPerm(mediaId, accsee_token);
 	}
 
 	/**
@@ -325,9 +324,9 @@ public class MaterialManager {
 	 * @param mediaId
 	 * @return
 	 */
-	private static byte[] downloadPerm(String mediaId) {
+	private static byte[] downloadPerm(String mediaId, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=%s&media_id=%s";
-		url = String.format(url, TokenProxy.accessToken(), mediaId);
+		url = String.format(url, accsee_token, mediaId);
 		byte[] fb = HttpUtils.getFile(url);
 		if (fb == null || fb.length == 0)
 			return null;
@@ -342,9 +341,9 @@ public class MaterialManager {
 	 *         正常情况下调用成功时，errcode将为0。
 	 * @author vcdemon
 	 */
-	public static MediaFile deletePermMaterial(String mediaId) {
+	public static MediaFile deletePermMaterial(String mediaId, String accsee_token) {
 		String url = "https://api.weixin.qq.com/cgi-bin/material/del_material?access_token=%s";
-		url = String.format(url, TokenProxy.accessToken());
+		url = String.format(url, accsee_token);
 		String result = HttpUtils.post(url, JSONObject.toJSONString(new MediaFile().setMedia_id(mediaId)));
 		MediaFile media = parseUploadResult(result);
 		return media;
