@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.itfvck.wechatframework</groupId>
 		<artifactId>wechat-pom</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.2</version>
 		<relativePath>../wechat-pom/pom.xml</relativePath>
 	</parent>
 
