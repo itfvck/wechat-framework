@@ -36,8 +36,7 @@ public class ValidateController {
 		JSSDKParams signature = new JSSDKParams();
 		try {
 			String jsTiket = tokenProxy.jsTiket("wx44d483e10bee9fc1", "353df047c6100ad4922e08f150306bbe");
-			signature = JSSDKAPI.signatureJS_SDK(jsTiket, url);
-			signature.setAppId("wx44d483e10bee9fc1");
+			signature = JSSDKAPI.signatureJS_SDK(jsTiket, url, "wx44d483e10bee9fc1");
 			map.put("msg", "success");
 		} catch (Exception e) {
 			map.put("msg", "验证错误");

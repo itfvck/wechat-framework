@@ -21,7 +21,7 @@ public class JsSDKTest extends TestCase {
 		System.out.println("access_token=" + access_token);
 		String js_tiket = JSSDKAPI.getJs_tiket(access_token);
 		System.out.println(js_tiket);
-		JSSDKParams signatureJS_SDK = JSSDKAPI.signatureJS_SDK(js_tiket, "http://www.baidu.com");
+		JSSDKParams signatureJS_SDK = JSSDKAPI.signatureJS_SDK(js_tiket, "http://www.baidu.com", BaseTestConf.appId);
 		System.out.println(signatureJS_SDK);
 	}
 

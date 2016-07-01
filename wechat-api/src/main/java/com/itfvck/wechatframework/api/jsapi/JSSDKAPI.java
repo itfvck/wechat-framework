@@ -66,11 +66,11 @@ public class JSSDKAPI {
 	 * @CreationDate 2016年5月25日 下午4:00:42
 	 * @Author lidong(dli@gdeng.cn)
 	 */
-	public static JSSDKParams signatureJS_SDK(String ticket, String url) {
+	public static JSSDKParams signatureJS_SDK(String ticket, String url,String appid) {
 		JSSDKParams jssdkConf = new JSSDKParams();
+		jssdkConf = signatureJSSDKConf(jssdkConf);
 		jssdkConf.setTicket(ticket);
 		jssdkConf.setUrl(url);
-		jssdkConf = signatureJSSDKConf(jssdkConf);
 		return jssdkConf;
 	}
 
