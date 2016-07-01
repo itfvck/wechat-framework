@@ -32,7 +32,7 @@ public class ValidateController {
 	@RequestMapping(value = "wechat/jssdk")
 	@ResponseBody
 	public Map<String, Object> signatureJSSDK(String url) {
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			String jsTiket = tokenProxy.jsTiket("wx44d483e10bee9fc1", "353df047c6100ad4922e08f150306bbe");
 			JSSDKParams signature = JSSDKAPI.signatureJS_SDK(jsTiket, url, "wx44d483e10bee9fc1");
