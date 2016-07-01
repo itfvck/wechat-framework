@@ -30,7 +30,9 @@ public class AbstractTokenProxy implements TokenProxy {
 	/**
 	 * 默认token过期时间
 	 */
-	protected static final Long EXPIRE_TIME = 6000 * 1000L;
+	 protected static final Long EXPIRE_TIME = 6000 * 1000L;
+
+//	protected static final Long EXPIRE_TIME = 20 * 1000L;// 测试用。值设小
 
 	public String accessToken(String appid, String secret) {
 		return null;

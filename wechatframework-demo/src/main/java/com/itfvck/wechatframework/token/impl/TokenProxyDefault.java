@@ -14,9 +14,9 @@ import com.itfvck.wechatframework.token.AbstractTokenProxy;
  * @author lidong
  *
  */
-@Service("tokenProxy")
-public class TokenProxyTemplate extends AbstractTokenProxy {
-	private static Logger logger = LoggerFactory.getLogger(TokenProxyTemplate.class);
+//@Service("tokenProxy")
+public class TokenProxyDefault extends AbstractTokenProxy {
+	private static Logger logger = LoggerFactory.getLogger(TokenProxyDefault.class);
 
 	@Override
 	public String accessToken(String appid, String secret) {
