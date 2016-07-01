@@ -19,7 +19,7 @@ import com.itfvck.wechatframework.token.AbstractTokenProxy;
  * @author lidong
  *
  */
-@Service("tokenProxy")
+//@Service("tokenProxy")
 public class TokenProxyRedis extends AbstractTokenProxy {
 	private static Logger logger = LoggerFactory.getLogger(TokenProxyRedis.class);
 

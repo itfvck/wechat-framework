@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.itfvck.wechatframework.core.util.EncryptUtil;
+import com.itfvck.wechatframework.core.util.RandomStringGenerator;
 import com.itfvck.wechatframework.core.util.http.HttpUtils;
 
 /**
@@ -68,9 +69,9 @@ public class JSSDKAPI {
 	 */
 	public static JSSDKParams signatureJS_SDK(String ticket, String url, String appid) {
 		JSSDKParams jssdkConf = new JSSDKParams();
-		jssdkConf = signatureJSSDKConf(jssdkConf);
-		jssdkConf.setTicket(ticket);
-		jssdkConf.setUrl(url);
+		jssdkConf.setNonceStr(RandomStringGenerator.generate());
+		jssdkConf.setTimestamp(System.currentTimeMillis() / 1000);
+		jssdkConf.setSignature(signatureJSSDKConf(ticket, url, jssdkConf.getNonceStr(), jssdkConf.getTimestamp()));
 		jssdkConf.setAppId(appid);
 		return jssdkConf;
 	}
@@ -83,12 +84,9 @@ public class JSSDKAPI {
 	 * @CreationDate 2016年5月25日 下午4:00:42
 	 * @Author lidong(dli@gdeng.cn)
 	 */
-	private static JSSDKParams signatureJSSDKConf(JSSDKParams jssdkConf) {
-		jssdkConf.setNonceStr(UUID.randomUUID().toString());
-		jssdkConf.setTimestamp(System.currentTimeMillis() / 1000);
-		jssdkConf.setSignature(EncryptUtil.SHA1Encrypt(new StringBuilder().append("jsapi_ticket=").append(jssdkConf.getTicket()).append("&noncestr=")
-				.append(jssdkConf.getNonceStr()).append("&timestamp=").append(jssdkConf.getTimestamp()).append("&url=").append(jssdkConf.getUrl()).toString()));
-		return jssdkConf;
+	private static String signatureJSSDKConf(String ticket, String url, String nonceStr, Long timestamp) {
+		return EncryptUtil.SHA1Encrypt(new StringBuilder().append("jsapi_ticket=").append(ticket).append("&noncestr=").append(nonceStr).append("&timestamp=").append(timestamp)
+				.append("&url=").append(url).toString());
 	}
 
 }

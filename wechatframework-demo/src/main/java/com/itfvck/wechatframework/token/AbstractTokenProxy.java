@@ -30,9 +30,9 @@ public class AbstractTokenProxy implements TokenProxy {
 	/**
 	 * 默认token过期时间
 	 */
-	 protected static final Long EXPIRE_TIME = 6000 * 1000L;
+	protected static final Long EXPIRE_TIME = 6000 * 1000L;
 
-//	protected static final Long EXPIRE_TIME = 20 * 1000L;// 测试用。值设小
+	// protected static final Long EXPIRE_TIME = 20 * 1000L;// 测试用。值设小
 
 	public String accessToken(String appid, String secret) {
 		return null;
@@ -88,7 +88,12 @@ public class AbstractTokenProxy implements TokenProxy {
 	 */
 	protected String refreshJsTiket(String appid, String secret) {
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		String js_tiket = JSSDKAPI.getJs_tiket(getAccessTokenFromMap(appid, ACCESS_TOKEN_PREFIX));
+
+		String accessToken = getAccessTokenFromMap(appid, ACCESS_TOKEN_PREFIX);
+		if (StringUtils.isEmpty(accessToken)) {
+			accessToken = refreshAccessToken(appid, secret);
+		}
+		String js_tiket = JSSDKAPI.getJs_tiket(accessToken);
 		logger.info("请求js_tiket=" + js_tiket);
 		if (StringUtils.isNotEmpty(js_tiket)) {
 			map.put(JS_TIKET_PREFIX, js_tiket);
