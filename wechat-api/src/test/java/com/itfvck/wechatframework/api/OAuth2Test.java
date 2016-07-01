@@ -5,7 +5,6 @@ import org.junit.Test;
 import com.itfvck.wechatframework.api.oauth.OAuth2API;
 import com.itfvck.wechatframework.api.oauth.OAuthData;
 import com.itfvck.wechatframework.api.token.AccessTokenAPI;
-import com.itfvck.wechatframework.api.user.UserInfo;
 
 import junit.framework.TestCase;
 
@@ -40,8 +39,6 @@ public class OAuth2Test extends TestCase {
 	@Test
 	public void test4() {
 		OAuthData access_token2 = OAuth2API.getAccess_token(BaseTestConf.appId, BaseTestConf.appSecret, "001AnTG40D7rBw175oI40Q0RG40AnTGo");
-		UserInfo userInfo = OAuth2API.getUserInfo(access_token2.getAccess_token(), access_token2.getOpenid());
-		System.out.println(userInfo);
 	}
 
 }

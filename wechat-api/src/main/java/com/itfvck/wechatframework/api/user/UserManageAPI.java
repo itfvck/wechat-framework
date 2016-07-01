@@ -30,7 +30,7 @@ public class UserManageAPI {
      *            传入access_token
      * @return
      * @CreationDate 2016年5月16日 上午10:03:27
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static Tag getTags(Tag tag) {
         String url = "https://api.weixin.qq.com/cgi-bin/tags/get?access_token=%s";
@@ -50,7 +50,7 @@ public class UserManageAPI {
      *            传入Tag属性tag->name,Tag属性tag->id,access_token
      * @return
      * @CreationDate 2016年5月16日 上午10:13:53
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static Tag updateTags(Tag tag) {
         String url = "https://api.weixin.qq.com/cgi-bin/tags/update?access_token=%s";
@@ -70,7 +70,7 @@ public class UserManageAPI {
      *            传入Tag属性tag->id,access_token
      * @return
      * @CreationDate 2016年5月16日 上午10:20:00
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static Tag deleteTags(Tag tag) {
         String url = "https://api.weixin.qq.com/cgi-bin/tags/delete?access_token=%s";
@@ -90,7 +90,7 @@ public class UserManageAPI {
      *            传入tagid,access_token,next_openid(第一个拉取的OPENID，不填默认从头开始拉取)
      * @return
      * @CreationDate 2016年5月16日 上午10:34:56
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static Tag getTagUser(Tag tag) {
         String url = "https://api.weixin.qq.com/cgi-bin/user/tag/get?access_token=%s";
@@ -110,7 +110,7 @@ public class UserManageAPI {
      *            传入openid,access_token
      * @return tagid_list
      * @CreationDate 2016年5月16日 上午10:42:14
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static Tag getIdList(Tag tag) {
         String url = "https://api.weixin.qq.com/cgi-bin/tags/getidlist?access_token=%s";
@@ -130,7 +130,7 @@ public class UserManageAPI {
      *            传入tagid,openid_list,access_token
      * @return
      * @CreationDate 2016年5月16日 上午10:45:49
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static Tag batchTagging(Tag tag) {
         String url = "https://api.weixin.qq.com/cgi-bin/tags/members/batchtagging?access_token=%s";
@@ -150,7 +150,7 @@ public class UserManageAPI {
      *            传入tagid,openid_list,access_token
      * @return
      * @CreationDate 2016年5月16日 上午10:45:49
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static Tag batchunTagging(Tag tag) {
         String url = "https://api.weixin.qq.com/cgi-bin/tags/members/batchuntagging?access_token=%s";
@@ -170,7 +170,7 @@ public class UserManageAPI {
      *            传入remark,openid,access_token
      * @return
      * @CreationDate 2016年5月16日 上午11:43:20
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static UserInfo updateRemark(UserInfo user) {
         String url = "https://api.weixin.qq.com/cgi-bin/user/info/updateremark?access_token=%s";
@@ -190,7 +190,7 @@ public class UserManageAPI {
      *            传入openid,access_token
      * @return
      * @CreationDate 2016年5月16日 上午11:36:52
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static UserInfo getUserInfo(UserInfo user) {
         String url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=%s&openid=%s&lang=%s";
@@ -210,7 +210,7 @@ public class UserManageAPI {
      *            传入access_token,user_list->openid列表
      * @return
      * @CreationDate 2016年5月16日 上午11:49:36
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static UserData batchGetUserInfo(UserData user) {
         String url = "https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=%s";
@@ -230,7 +230,7 @@ public class UserManageAPI {
      *            传入access_token,next_openid(可以不传值，不可为null,否则报错,可为"")
      * @return
      * @CreationDate 2016年5月16日 下午12:18:00
-     * @Author lidong(dli@gdeng.cn)
+     * @Author 
      */
     public static UserData getUserList(UserData user) {
         String url = "https://api.weixin.qq.com/cgi-bin/user/get?access_token=%s&next_openid=%s";

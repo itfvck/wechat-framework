@@ -33,17 +33,16 @@ public class ValidateController {
 	@ResponseBody
 	public Map<String, Object> signatureJSSDK(String url) {
 		Map<String, Object> map = new HashMap<>();
-		JSSDKParams signature = new JSSDKParams();
 		try {
 			String jsTiket = tokenProxy.jsTiket("wx44d483e10bee9fc1", "353df047c6100ad4922e08f150306bbe");
-			signature = JSSDKAPI.signatureJS_SDK(jsTiket, url, "wx44d483e10bee9fc1");
+			JSSDKParams signature = JSSDKAPI.signatureJS_SDK(jsTiket, url, "wx44d483e10bee9fc1");
 			map.put("msg", "success");
+			map.put("result", signature);
 		} catch (Exception e) {
 			map.put("msg", "验证错误");
 			logger.error("jssdk验证错误", e);
 			return map;
 		}
-		map.put("result", signature);
 		return map;
 	}
 

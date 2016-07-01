@@ -6,13 +6,8 @@ import com.itfvck.wechatframework.core.common.BaseData;
 
 /**
  * @Description 微信用户信息
- * @Project weixin-core
- * @ClassName UserInfo.java
- * @Author lidong(dli@gdeng.cn)
+ * @Author lidong
  * @CreationDate 2016年5月12日 上午9:43:28
- * @Version V2.0
- * @Copyright 谷登科技 2015-2016
- * @ModificationHistory
  */
 public class UserInfo extends BaseData {
     private static final long serialVersionUID = 1897367234511577769L;
