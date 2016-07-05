@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.itfvck.wechatframework.api.jsapi.JSSDKAPI;
-import com.itfvck.wechatframework.api.token.AccessTokenAPI;
+import com.itfvck.wechatframework.api.jsapi.WxJsSDKAPI;
+import com.itfvck.wechatframework.api.token.WxAccessTokenAPI;
 import com.itfvck.wechatframework.token.AbstractTokenProxy;
 
 /**
@@ -33,7 +33,7 @@ public class TokenProxyRedis extends AbstractTokenProxy {
 			logger.info("accessToken redis存在,accessToken=" + token);
 			return token;
 		} else {
-			String access_token = AccessTokenAPI.getAccess_token(appid, secret);
+			String access_token = WxAccessTokenAPI.getAccess_token(appid, secret);
 			logger.info("accessToken redis未获取到,刷新accessToken=" + access_token);
 			if (StringUtils.isNotEmpty(access_token)) {
 				redisTemplate.opsForValue().set(ACCESS_TOKEN_PREFIX + appid, access_token, EXPIRE_TIME, TimeUnit.MILLISECONDS);
@@ -51,7 +51,7 @@ public class TokenProxyRedis extends AbstractTokenProxy {
 			logger.info("js_tiket redis存在,js_tiket=" + token);
 			return token;
 		} else {
-			String js_tiket = JSSDKAPI.getJs_tiket(accessToken(appid, secret));
+			String js_tiket = WxJsSDKAPI.getJs_tiket(accessToken(appid, secret));
 			logger.info("js_tiket redis未获取到,刷新js_tiket=" + js_tiket);
 			if (StringUtils.isNotEmpty(js_tiket)) {
 				redisTemplate.opsForValue().set(JS_TIKET_PREFIX + appid, js_tiket, EXPIRE_TIME, TimeUnit.MILLISECONDS);

@@ -20,7 +20,7 @@ public class TimerTask {
 	 */
 	public void run() {
 //		logger.info("系统中access_token:" + tokenProxy.accessToken("wx44d483e10bee9fc1", "353df047c6100ad4922e08f150306bbe"));
-//		logger.info("系统中jsapi_ticket:" + tokenProxy.jsTiket("wx44d483e10bee9fc1", "353df047c6100ad4922e08f150306bbe"));
+		logger.info("系统中jsapi_ticket:" + tokenProxy.jsTiket("wx44d483e10bee9fc1", "353df047c6100ad4922e08f150306bbe"));
 	}
 
 }

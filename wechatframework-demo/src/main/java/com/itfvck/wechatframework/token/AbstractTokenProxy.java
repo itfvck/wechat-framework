@@ -9,8 +9,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.itfvck.wechatframework.api.jsapi.JSSDKAPI;
-import com.itfvck.wechatframework.api.token.AccessTokenAPI;
+import com.itfvck.wechatframework.api.jsapi.WxJsSDKAPI;
+import com.itfvck.wechatframework.api.token.WxAccessTokenAPI;
 
 /**
  * token管理抽象类，
@@ -68,7 +68,7 @@ public class AbstractTokenProxy implements TokenProxy {
 	 */
 	protected String refreshAccessToken(String appid, String secret) {
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		String access_token = AccessTokenAPI.getAccess_token(appid, secret);
+		String access_token = WxAccessTokenAPI.getAccess_token(appid, secret);
 		logger.info("请求access_token=" + access_token);
 		if (StringUtils.isNotEmpty(access_token)) {
 			map.put(ACCESS_TOKEN_PREFIX, access_token);
@@ -93,7 +93,7 @@ public class AbstractTokenProxy implements TokenProxy {
 		if (StringUtils.isEmpty(accessToken)) {
 			accessToken = refreshAccessToken(appid, secret);
 		}
-		String js_tiket = JSSDKAPI.getJs_tiket(accessToken);
+		String js_tiket = WxJsSDKAPI.getJs_tiket(accessToken);
 		logger.info("请求js_tiket=" + js_tiket);
 		if (StringUtils.isNotEmpty(js_tiket)) {
 			map.put(JS_TIKET_PREFIX, js_tiket);

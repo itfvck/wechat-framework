@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itfvck.wechatframework.api.jsapi.JSSDKAPI;
+import com.itfvck.wechatframework.api.jsapi.WxJsSDKAPI;
 import com.itfvck.wechatframework.api.jsapi.JSSDKParams;
 import com.itfvck.wechatframework.token.TokenProxy;
 
@@ -35,7 +35,7 @@ public class ValidateController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			String jsTiket = tokenProxy.jsTiket("wx44d483e10bee9fc1", "353df047c6100ad4922e08f150306bbe");
-			JSSDKParams signature = JSSDKAPI.signatureJS_SDK(jsTiket, url, "wx44d483e10bee9fc1");
+			JSSDKParams signature = WxJsSDKAPI.signatureJS_SDK(jsTiket, url, "wx44d483e10bee9fc1");
 			map.put("msg", "success");
 			map.put("result", signature);
 		} catch (Exception e) {
