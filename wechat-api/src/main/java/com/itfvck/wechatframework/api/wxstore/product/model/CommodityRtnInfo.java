@@ -3,6 +3,7 @@ package com.itfvck.wechatframework.api.wxstore.product.model;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class CommodityRtnInfo extends BaseData {
+
 	private static final long serialVersionUID = 7294586426530317764L;
 	// 错误信息
 	private String errmsg;

@@ -3,6 +3,7 @@ package com.itfvck.wechatframework.api.coupon.qrcode.model;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class QrcodeInfo extends BaseData {
+
 	private static final long serialVersionUID = 6392584179305332803L;
 	// 名称
 	private String action_name;

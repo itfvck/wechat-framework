@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itfvck.wechatframework.api.oauth.WxOAuth2API;
 import com.itfvck.wechatframework.api.oauth.OAuthData;
-import com.itfvck.wechatframework.api.user.User;
 import com.itfvck.wechatframework.api.user.WxUserAPI;
+import com.itfvck.wechatframework.api.user.model.User;
 import com.itfvck.wechatframework.token.TokenProxy;
 
 @Controller

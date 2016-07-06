@@ -3,6 +3,7 @@ package com.itfvck.wechatframework.api.coupon.location.model;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class CardInfo extends BaseData {
+
 	private static final long serialVersionUID = 241391040579231164L;
 	// 卡券类型
 	private String card_type;

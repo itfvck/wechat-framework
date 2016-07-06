@@ -1,7 +1,13 @@
 package com.itfvck.wechatframework.api.third.model;
 
-public class ApiComponentToken {
+import com.itfvck.wechatframework.core.common.BaseData;
 
+public class ApiComponentToken extends BaseData{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 428963021083711552L;
 	private String component_appid;
 	private String component_appsecret;
 	private String component_verify_ticket;

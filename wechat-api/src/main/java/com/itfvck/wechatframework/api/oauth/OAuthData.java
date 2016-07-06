@@ -14,15 +14,15 @@ public class OAuthData extends BaseData {
 	private String redirect_uri;// 授权后重定向的回调链接地址，请使用urlencode对链接进行处理
 	private String response_type = "code";// 返回类型，请填写code
 	private String scope;// 应用授权作用域，snsapi_base
-	                     // （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo
-	                     // （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
+							// （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo
+							// （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
 	private String state;// 重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节
 	private String wechat_redirect = "#wechat_redirect";// 是
-	                                                    // 无论直接打开还是做页面302重定向时候，必须带此参数
+														// 无论直接打开还是做页面302重定向时候，必须带此参数
 
 	private String code;// 填写第一步获取的code参数
 	private String grant_type = "authorization_code";// 填写为authorization_code
-	                                                 // [刷新access_token（如果需要）填写为refresh_token]
+														// [刷新access_token（如果需要）填写为refresh_token]
 
 	private String lang;// 返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语
 
@@ -93,7 +93,7 @@ public class OAuthData extends BaseData {
 	@Override
 	public String toString() {
 		return "GrantData [redirect_uri=" + redirect_uri + ", response_type=" + response_type + ", scope=" + scope + ", state=" + state + ", wechat_redirect=" + wechat_redirect
-		        + ", code=" + code + ", grant_type=" + grant_type + ", lang=" + lang + "]";
+				+ ", code=" + code + ", grant_type=" + grant_type + ", lang=" + lang + "]";
 	}
 
 }

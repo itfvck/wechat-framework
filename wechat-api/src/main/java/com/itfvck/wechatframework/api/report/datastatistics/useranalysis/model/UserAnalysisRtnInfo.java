@@ -10,7 +10,7 @@ import com.itfvck.wechatframework.core.common.BaseData;
  * @author zhaoxl
  * @date 2015年1月29日 下午10:44:11
  */
-public class UserAnalysisRtnInfo extends BaseData{
+public class UserAnalysisRtnInfo extends BaseData {
 
 	/**
 	 * 

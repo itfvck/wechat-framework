@@ -1,4 +1,4 @@
-﻿package com.itfvck.wechatframework.api.third;
+package com.itfvck.wechatframework.api.third;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +25,7 @@ import com.itfvck.wechatframework.core.util.http.HttpUtils;
  * 
  */
 public class WxThirdAPI {
+
 	private static Logger logger = LoggerFactory.getLogger(WxThirdAPI.class);
 	// 获取预授权码
 	private static String api_create_preauthcode_url = "https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=COMPONENT_ACCESS_TOKEN";
@@ -170,9 +171,9 @@ public class WxThirdAPI {
 	 * @throws WexinReqException
 	 */
 	public static ReOpenAccessToken getAccessTokenByCode(String appid, String code, String grant_type, String component_appid, String component_access_token)
-	        throws WexinReqException {
+			throws WexinReqException {
 		String requestUrl = get_access_token_bycode_url.replace("COMPONENT_APPID", component_appid).replace("COMPONENT_ACCESS_TOKEN", component_access_token)
-		        .replace("authorization_code", grant_type).replace("CODE", code).replace("APPID", appid);
+				.replace("authorization_code", grant_type).replace("CODE", code).replace("APPID", appid);
 		String result = HttpUtils.get(requestUrl);
 		ReOpenAccessToken reOpenAccessToken = JSON.parseObject(result, ReOpenAccessToken.class);
 		if (reOpenAccessToken.getErrcode() != 0) {
@@ -196,22 +197,5 @@ public class WxThirdAPI {
 		String result = HttpUtils.post(url, json);
 		return result;
 	}
-
-	public static void main(String[] args) {
-
-		try {
-			// String s =
-			// JwThirdAPI.getPreAuthCode("wx5412820bba6f6bd6","unisk");
-
-			ApiComponentToken apiComponentToken = new ApiComponentToken();
-			// apiComponentToken.setComponent_appid("wx5412820bba6f6bd6");
-			apiComponentToken.setComponent_appid("??");
-			apiComponentToken.setComponent_appsecret("???");
-			apiComponentToken.setComponent_verify_ticket(null);
-			String s = WxThirdAPI.getAccessToken(apiComponentToken);
-			System.out.println(s);
-		} catch (WexinReqException e) {
-			e.printStackTrace();
-		}
-	}
+	
 }

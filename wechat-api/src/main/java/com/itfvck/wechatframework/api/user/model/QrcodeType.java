@@ -1,4 +1,4 @@
-package com.itfvck.wechatframework.api.user;
+package com.itfvck.wechatframework.api.user.model;
 /**
  * 二维码类型
  * @author Zhangxs

@@ -3,6 +3,7 @@ package com.itfvck.wechatframework.api.third.model;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class ReOpenAccessToken extends BaseData {
+	
 
 	private static final long serialVersionUID = -3810236806046006377L;
 	/**

@@ -5,6 +5,7 @@ import java.util.List;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class SkuInfo extends BaseData {
+
 	/**
 	 * 
 	 */

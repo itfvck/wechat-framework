@@ -10,6 +10,7 @@ import com.itfvck.wechatframework.core.common.BaseData;
  *         2015年1月27日
  */
 public class DataCubeBase extends BaseData{
+	
 
 	/**
 	 * 

@@ -1,9 +1,16 @@
 package com.itfvck.wechatframework.api.third.model;
+
+import com.itfvck.wechatframework.core.common.BaseData;
+
 /**
  * 获取授权方的账户信息 参数实体
  *
  */
-public class ApiGetAuthorizer {
+public class ApiGetAuthorizer extends BaseData{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -610734753269575018L;
 	//第三方平台appid
 	private String component_appid;  
 	//授权方appid

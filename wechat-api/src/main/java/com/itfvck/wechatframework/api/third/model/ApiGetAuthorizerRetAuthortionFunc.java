@@ -1,6 +1,12 @@
 package com.itfvck.wechatframework.api.third.model;
 
-public class ApiGetAuthorizerRetAuthortionFunc {
+import com.itfvck.wechatframework.core.common.BaseData;
+
+public class ApiGetAuthorizerRetAuthortionFunc extends BaseData{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2282392102980005012L;
 	private ApiGetAuthorizerRetAuthortionFuncCate funcscope_category;
 
 	public ApiGetAuthorizerRetAuthortionFuncCate getFuncscope_category() {

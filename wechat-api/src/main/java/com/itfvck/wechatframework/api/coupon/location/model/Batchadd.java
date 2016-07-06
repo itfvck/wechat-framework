@@ -5,6 +5,7 @@ import java.util.List;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class Batchadd extends BaseData {
+
 	private static final long serialVersionUID = 5796039322217440404L;
 	// 门店信息
 	private List<LocationList> location_list;

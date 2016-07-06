@@ -8,6 +8,10 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.itfvck.wechatframework.api.user.model.Follwers;
+import com.itfvck.wechatframework.api.user.model.Group;
+import com.itfvck.wechatframework.api.user.model.LanguageType;
+import com.itfvck.wechatframework.api.user.model.User;
 import com.itfvck.wechatframework.core.exception.WeChatException;
 import com.itfvck.wechatframework.core.util.WeChatUtil;
 import com.itfvck.wechatframework.core.util.http.HttpUtils;

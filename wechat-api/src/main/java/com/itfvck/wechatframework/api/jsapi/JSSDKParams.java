@@ -11,6 +11,7 @@ import com.itfvck.wechatframework.core.common.BaseData;
  * @CreationDate 2016年5月25日 下午3:11:15
  */
 public class JSSDKParams extends BaseData {
+
 	private static final long serialVersionUID = 2376847458258605843L;
 	private String ticket;// jsapi_ticket是公众号用于调用微信JS接口的临时票据
 	private Long timestamp;// 生成签名的时间戳
@@ -70,6 +71,6 @@ public class JSSDKParams extends BaseData {
 	@Override
 	public String toString() {
 		return "JSSDKConf [ticket=" + ticket + ", timestamp=" + timestamp + ", nonceStr=" + nonceStr + ", signature=" + signature + ", jsApiList=" + jsApiList + ", url=" + url
-		        + "]";
+				+ "]";
 	}
 }

@@ -8,6 +8,7 @@ import com.itfvck.wechatframework.core.common.BaseData;
  * @author machaolin
  */
 public class ApiGetAuthorizerRet extends BaseData {
+	
 	private static final long serialVersionUID = -8883872039150424422L;
 	// 授权方的账户信息
 	private ApiGetAuthorizerRetAuthorizer authorizer_info;

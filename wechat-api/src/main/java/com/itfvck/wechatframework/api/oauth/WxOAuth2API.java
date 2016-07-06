@@ -3,7 +3,7 @@ package com.itfvck.wechatframework.api.oauth;
 import java.util.Random;
 
 import com.alibaba.fastjson.JSON;
-import com.itfvck.wechatframework.api.user.UserInfo;
+import com.itfvck.wechatframework.api.user.model.UserInfo;
 import com.itfvck.wechatframework.core.util.http.HttpUtils;
 
 /**
@@ -12,6 +12,7 @@ import com.itfvck.wechatframework.core.util.http.HttpUtils;
  * @CreationDate 2016年5月12日 上午9:21:53
  */
 public class WxOAuth2API {
+
 	/* 生成OAuth重定向URI（用户同意授权，获取code） */
 	private static final String HTTPS_OPEN_WEIXIN_QQ_COM_CONNECT_OAUTH2_AUTHORIZE = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=%s&state=%s#wechat_redirect";
 	/* 通过code换取网页授权access_token */
@@ -26,8 +27,7 @@ public class WxOAuth2API {
 	/**
 	 * @Description 生成OAuth重定向URI（用户同意授权，获取code）,默认snsapi_userinfo
 	 *              <p>
-	 *              第一步：用户同意授权，获取code ( 必须在微信客户端发起请求,如：微信公众号菜单链接，消息链接等)
-	 *              传入appid、redirect_uri
+	 *              第一步：用户同意授权，获取code ( 必须在微信客户端发起请求,如：微信公众号菜单链接，消息链接等) 传入appid、redirect_uri
 	 * @param redirectURI
 	 * @param appid
 	 * @return
@@ -41,8 +41,7 @@ public class WxOAuth2API {
 	/**
 	 * @Description 生成OAuth重定向URI（用户同意授权，获取code）,
 	 *              <p>
-	 *              第一步：用户同意授权，获取code ( 必须在微信客户端发起请求,如：微信公众号菜单链接，消息链接等)
-	 *              传入appid、redirect_uri、scope、state
+	 *              第一步：用户同意授权，获取code ( 必须在微信客户端发起请求,如：微信公众号菜单链接，消息链接等) 传入appid、redirect_uri、scope、state
 	 * @param redirectURI
 	 * @param scope
 	 * @param state
@@ -56,8 +55,7 @@ public class WxOAuth2API {
 	}
 
 	/**
-	 * @Description 第二步：通过code换取网页授权access_token,refresh_token,expires_in,openid
-	 *              ,unionid
+	 * @Description 第二步：通过code换取网页授权access_token,refresh_token,expires_in,openid ,unionid
 	 * @param grant
 	 *            传入appid、secret、code
 	 * @return

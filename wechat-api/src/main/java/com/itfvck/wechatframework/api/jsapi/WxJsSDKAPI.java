@@ -15,6 +15,7 @@ import com.itfvck.wechatframework.core.util.http.HttpUtils;
  *
  */
 public class WxJsSDKAPI {
+
 	private static final String GET_JS_SDK_CONF = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=%s&type=jsapi";
 
 	/**
@@ -84,7 +85,7 @@ public class WxJsSDKAPI {
 	 */
 	private static String signatureJSSDKConf(String ticket, String url, String nonceStr, Long timestamp) {
 		return EncryptUtil.SHA1Encrypt(new StringBuilder().append("jsapi_ticket=").append(ticket).append("&noncestr=").append(nonceStr).append("&timestamp=").append(timestamp)
-		        .append("&url=").append(url).toString());
+				.append("&url=").append(url).toString());
 	}
 
 }

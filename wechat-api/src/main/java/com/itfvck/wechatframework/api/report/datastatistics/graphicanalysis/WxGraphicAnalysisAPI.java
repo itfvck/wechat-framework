@@ -40,9 +40,7 @@ public class WxGraphicAnalysisAPI {
 
 	/**
 	 * @throws UnsupportedEncodingException
-	 * @Title: getArticleSummary @Description: 获取图文群发每日数据 @param @param
-	 *         accesstoken @param @param begin_date @param @param
-	 *         end_date @param @return @param @throws WexinReqException
+	 * @Title: getArticleSummary @Description: 获取图文群发每日数据 @param @param accesstoken @param @param begin_date @param @param end_date @param @return @param @throws WexinReqException
 	 *         设定文件 @return List<GraphicAnalysisRtnInfo> 返回类型 @throws
 	 */
 	public static List<GraphicAnalysisRtnInfo> getArticleSummary(String accesstoken, String begin_date, String end_date) throws WexinReqException, UnsupportedEncodingException {
@@ -67,10 +65,8 @@ public class WxGraphicAnalysisAPI {
 
 	/**
 	 * @throws UnsupportedEncodingException
-	 * @Title: getArticleTotal @Description: 获取图文群发总数据 最大时间跨度 1天 @param @param
-	 *         accesstoken @param @param begin_date @param @param
-	 *         end_date @param @return @param @throws WexinReqException
-	 *         设定文件 @return List<GraphicAnalysisRtnInfo> 返回类型 @throws
+	 * @Title: getArticleTotal @Description: 获取图文群发总数据 最大时间跨度 1天 @param @param accesstoken @param @param begin_date @param @param end_date @param @return @param @throws
+	 *         WexinReqException 设定文件 @return List<GraphicAnalysisRtnInfo> 返回类型 @throws
 	 */
 	public static List<GraphicAnalysisRtnInfo> getArticleTotal(String accesstoken, String begin_date, String end_date) throws WexinReqException, UnsupportedEncodingException {
 		if (accesstoken != null) {
@@ -94,9 +90,7 @@ public class WxGraphicAnalysisAPI {
 
 	/**
 	 * @throws UnsupportedEncodingException
-	 * @Title: getUserRead @Description: 获取图文统计数据 最大时间跨度 3 @param @param
-	 *         accesstoken @param @param begin_date @param @param
-	 *         end_date @param @return @param @throws WexinReqException
+	 * @Title: getUserRead @Description: 获取图文统计数据 最大时间跨度 3 @param @param accesstoken @param @param begin_date @param @param end_date @param @return @param @throws WexinReqException
 	 *         设定文件 @return List<GraphicAnalysisRtnInfo> 返回类型 @throws
 	 */
 	public static List<GraphicAnalysisRtnInfo> getUserRead(String accesstoken, String begin_date, String end_date) throws WexinReqException {
@@ -120,10 +114,8 @@ public class WxGraphicAnalysisAPI {
 	}
 
 	/**
-	 * @Title: getUserReadHour @Description: 获取图文统计分时数据 最大时间跨度1 @param @param
-	 *         accesstoken @param @param begin_date @param @param
-	 *         end_date @param @return @param @throws WexinReqException
-	 *         设定文件 @return List<GraphicAnalysisRtnInfo> 返回类型 @throws
+	 * @Title: getUserReadHour @Description: 获取图文统计分时数据 最大时间跨度1 @param @param accesstoken @param @param begin_date @param @param end_date @param @return @param @throws
+	 *         WexinReqException 设定文件 @return List<GraphicAnalysisRtnInfo> 返回类型 @throws
 	 */
 	public static List<GraphicAnalysisRtnInfo> getUserReadHour(String accesstoken, String begin_date, String end_date) throws WexinReqException {
 		if (accesstoken != null) {
@@ -146,10 +138,8 @@ public class WxGraphicAnalysisAPI {
 	}
 
 	/**
-	 * @Title: getUserShare @Description: 获取图文分享转发数据 最大时间跨度 7 @param @param
-	 *         accesstoken @param @param begin_date @param @param
-	 *         end_date @param @return @param @throws WexinReqException
-	 *         设定文件 @return List<GraphicAnalysisRtnInfo> 返回类型 @throws
+	 * @Title: getUserShare @Description: 获取图文分享转发数据 最大时间跨度 7 @param @param accesstoken @param @param begin_date @param @param end_date @param @return @param @throws
+	 *         WexinReqException 设定文件 @return List<GraphicAnalysisRtnInfo> 返回类型 @throws
 	 */
 	public static List<GraphicAnalysisRtnInfo> getUserShare(String accesstoken, String begin_date, String end_date) throws WexinReqException {
 		if (accesstoken != null) {

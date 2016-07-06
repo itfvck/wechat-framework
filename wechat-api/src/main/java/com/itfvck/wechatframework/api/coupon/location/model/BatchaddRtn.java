@@ -5,6 +5,7 @@ import java.util.List;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class BatchaddRtn extends BaseData {
+
 	/**
 	 * 
 	 */

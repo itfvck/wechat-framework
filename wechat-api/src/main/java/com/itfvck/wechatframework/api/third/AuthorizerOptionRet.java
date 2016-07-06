@@ -6,6 +6,7 @@ import com.itfvck.wechatframework.core.common.BaseData;
  * 选项设置信息返回实体
  */
 public class AuthorizerOptionRet extends BaseData {
+
 	/**
 	 * 
 	 */

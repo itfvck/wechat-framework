@@ -1,8 +1,15 @@
 package com.itfvck.wechatframework.api.third.model;
+
+import com.itfvck.wechatframework.core.common.BaseData;
+
 /**
  * 授权方的账户信息实体
  */
-public class ApiGetAuthorizerRetAuthorizer {
+public class ApiGetAuthorizerRetAuthorizer extends BaseData{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -857895125722107097L;
 	//昵称
 	private String nick_name ;
 	//头像

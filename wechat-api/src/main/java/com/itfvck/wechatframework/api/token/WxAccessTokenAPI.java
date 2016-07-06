@@ -12,6 +12,7 @@ import com.itfvck.wechatframework.core.util.http.HttpUtils;
  * @CreationDate 2016年5月12日 上午10:31:55
  */
 public class WxAccessTokenAPI {
+
 	private static final String GET_ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s";
 
 	/**

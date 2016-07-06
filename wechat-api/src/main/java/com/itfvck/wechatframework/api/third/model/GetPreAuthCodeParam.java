@@ -9,6 +9,7 @@ import com.itfvck.wechatframework.core.common.BaseData;
  *
  */
 public class GetPreAuthCodeParam extends BaseData {
+	
 	private static final long serialVersionUID = 233303073301775101L;
 	private String component_appid;
 

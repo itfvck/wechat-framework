@@ -32,9 +32,7 @@ public class WxUserAnalysisAPI {
 
 	/**
 	 * @throws WexinReqException
-	 * @Title: getUserSummary @Description: 获取用户增减数据,传入的日期最大间隔为7天 @param @param
-	 *         accesstoken @param @return 设定文件 @return UserAnalysisRtnInfo
-	 *         返回类型 @throws
+	 * @Title: getUserSummary @Description: 获取用户增减数据,传入的日期最大间隔为7天 @param @param accesstoken @param @return 设定文件 @return UserAnalysisRtnInfo 返回类型 @throws
 	 */
 	public static List<UserAnalysisRtnInfo> getUserSummary(String accesstoken, String begin_date, String end_date) throws WexinReqException {
 		if (accesstoken != null) {

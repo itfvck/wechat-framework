@@ -4,17 +4,18 @@ import com.itfvck.wechatframework.core.common.BaseData;
 
 /**
  * 参数类--获取消息发送周数据
+ * 
  * @author luweichao
  *
- * 2015年1月27日
+ *         2015年1月27日
  */
 public class DataCubeStreamMsgMonthParam extends BaseData {
-	
+
 	private static final long serialVersionUID = 450291216117050541L;
 
 	// 开始时间
 	private String begin_date = null;
-	
+
 	// 结束时间
 	private String end_date = null;
 
@@ -33,5 +34,5 @@ public class DataCubeStreamMsgMonthParam extends BaseData {
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-	
+
 }

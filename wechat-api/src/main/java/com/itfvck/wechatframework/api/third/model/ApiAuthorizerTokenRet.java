@@ -6,6 +6,7 @@ import com.itfvck.wechatframework.core.common.BaseData;
  * （刷新）授权公众号的令牌返回数据
  */
 public class ApiAuthorizerTokenRet extends BaseData {
+	
 	private static final long serialVersionUID = -278793329699343167L;
 	// 授权方令牌
 	private String authorizer_access_token;

@@ -1,4 +1,4 @@
-package com.itfvck.wechatframework.api.user;
+package com.itfvck.wechatframework.api.user.model;
 
 import java.util.List;
 

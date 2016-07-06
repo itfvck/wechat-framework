@@ -5,6 +5,7 @@ import java.util.List;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class PropertiesInfo extends BaseData {
+
 	private static final long serialVersionUID = 1238831130635536318L;
 	// 属性id
 	private String id;

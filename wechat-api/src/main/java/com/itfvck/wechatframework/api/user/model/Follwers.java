@@ -1,13 +1,14 @@
-package com.itfvck.wechatframework.api.user;
+package com.itfvck.wechatframework.api.user.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.itfvck.wechatframework.core.common.BaseData;
 
 /**
  * 关注者集合
  * @author Zhangxs
  * @version 2015-7-5
  */
-public class Follwers {
+public class Follwers extends BaseData{
 	private int total;//	关注该公众账号的总用户数
 	private int count;//	拉取的OPENID个数，最大值为10000
 	private Data data;//	列表数据，OPENID的列表

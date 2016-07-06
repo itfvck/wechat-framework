@@ -3,6 +3,7 @@ package com.itfvck.wechatframework.api.coupon.location.model;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class CardInfoRtn extends BaseData {
+
 	/**
 	 * 
 	 */

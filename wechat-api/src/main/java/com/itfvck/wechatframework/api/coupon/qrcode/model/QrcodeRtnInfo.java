@@ -3,6 +3,7 @@ package com.itfvck.wechatframework.api.coupon.qrcode.model;
 import com.itfvck.wechatframework.core.common.BaseData;
 
 public class QrcodeRtnInfo extends BaseData {
+
 	/**
 	 * 
 	 */

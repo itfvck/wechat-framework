@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.itfvck.wechatframework.core.common.BaseData;
 
-public class Product extends BaseData{
+public class Product extends BaseData {
+
 	/**
 	 * 
 	 */
