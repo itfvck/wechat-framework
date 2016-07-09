@@ -1,6 +1,14 @@
 package com.itfvck.wechatframework.core.support;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang3.StringUtils;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.itfvck.wechatframework.core.common.BaseParams;
 import com.itfvck.wechatframework.core.common.EventType;
@@ -19,20 +27,39 @@ import com.itfvck.wechatframework.core.util.XmlHelper;
  *
  */
 abstract class WechatDispatcher {
+	static Logger logger = LoggerFactory.getLogger(WechatDispatcher.class);
 
 	/**
 	 * 微信服务器消息入口
 	 * 
 	 * @param request
 	 * @param conf
+	 *            当前请求微信公众号
 	 * @param params
+	 * @param baseParamList
+	 *            微信公众号集合
 	 * @return 返回处理后的消息
 	 * @throws Exception
 	 */
-	public String service(HttpServletRequest request, BaseParams conf, WechatParam params) {
-		WechatRequest wechatRequest;
+	public String service(HttpServletRequest request, BaseParams conf, WechatParam params, List<BaseParams> baseParamList) {
 		try {
-			wechatRequest = XmlHelper.toObj(XmlHelper.parseXml(request, conf, params));
+			String msgXml = XmlHelper.parseXml(request);
+			WechatRequest wechatRequest = XmlHelper.toObj(msgXml);
+			if (StringUtils.isNotEmpty(wechatRequest.getEncrypt())) {
+				// 如果是密文消息，则批量解密，解密成功则返回消息
+				logger.info("加密之后，密文消息：" + msgXml);
+				for (BaseParams baseParams : baseParamList) {
+					if (StringUtils.isNotEmpty(baseParams.getEncodingAESKey())) {
+						WXBizMsgCrypt wxBizMsgCrypt = new WXBizMsgCrypt(baseParams.getToken(), baseParams.getEncodingAESKey(), baseParams.getAppId());
+						Document document = DocumentHelper.parseText(wxBizMsgCrypt.decryptMsg(params.getMsg_signature(), params.getTimestamp(), params.getNonce(), msgXml));
+						wechatRequest = XmlHelper.toObj(document.asXML());
+						if (wechatRequest.getToUserName().equals(baseParams.getGhId())) {
+							logger.info("解密之后，明文消息：" + wechatRequest.toString());
+							break;
+						}
+					}
+				}
+			}
 			String xml = null;
 			// 消息类型
 			switch (MsgType.valueOf(wechatRequest.getMsgType())) {
@@ -43,14 +70,13 @@ abstract class WechatDispatcher {
 				xml = dispatchMessage(wechatRequest);
 				break;
 			}
-
-			if (WechatCommonConst.AES.getValue().equals(params.getEncrypt_type())) {
+			// 加密
+			if (WechatCommonConst.AES.getValue().equals(params.getEncrypt_type()) && StringUtils.isNotEmpty(conf.getEncodingAESKey())) {
 				WXBizMsgCrypt wxBizMsgCrypt = new WXBizMsgCrypt(conf.getToken(), conf.getEncodingAESKey(), conf.getAppId());
 				return wxBizMsgCrypt.encryptMsg(xml, params.getTimestamp(), params.getNonce());
 			} else {
 				return xml;
 			}
-			// 加密
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

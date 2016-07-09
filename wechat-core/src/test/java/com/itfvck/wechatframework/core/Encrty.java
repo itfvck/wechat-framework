@@ -16,11 +16,15 @@ public class Encrty extends TestCase {
 	public void testdec() {
 		StringBuilder postData = new StringBuilder();
 		postData.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		postData.append("<xml><ToUserName><![CDATA[gh_8efcc54b626f]]></ToUserName>");
-		postData.append("<Encrypt><![CDATA[YejMqz83ESe7+yzL46TtLz6RS32GluI5GHZ5skF3RoLUd6H6NM6QYyH0JkvGtp/CVtYChAyAPNZarcac+Y8vnD6BEgEQeL6LIYvqRAI3HJmAdFhPqFqdt");
+		postData.append("<xml>");
+		postData.append("<ToUserName><![CDATA[gh_8efcc54b626f]]></ToUserName>");
+		postData.append("<Encrypt>");
+		postData.append("<![CDATA[YejMqz83ESe7+yzL46TtLz6RS32GluI5GHZ5skF3RoLUd6H6NM6QYyH0JkvGtp/CVtYChAyAPNZarcac+Y8vnD6BEgEQeL6LIYvqRAI3HJmAdFhPqFqdt");
 		postData.append("rJNHriEA2yXOllYirxkl4uUmaKpQE9nJnek8Dfg2ZpDY9oMAvqeAI9D52tswcp9iAB4T8oi+oC1rJ7ALrQhvUtOG688DTqym2yeTn1IiMUJPOyDSjQLTN9ePB49CghWbPzkuskOn");
 		postData.append("S/1Wi3zEfX9iGxI4WFeyNH75iIbNUZDJFMHgxF/rqKl+ZUsemVjTTYH3E5XtDFnwldH5r5474P8ClHr8UDnisp5hZoFhPCchiBlFFY32FiLWI2xb5ItjoOvApCfmUGaPEdC0pOSKrh3");
-		postData.append("wd2eyO9AnGJKmUlAg1gLYm1dzFnHUxkBOi4=]]></Encrypt></xml>");
+		postData.append("wd2eyO9AnGJKmUlAg1gLYm1dzFnHUxkBOi4=]]>");
+		postData.append("</Encrypt>");
+		postData.append("</xml>");
 		try {
 			WXBizMsgCrypt wxBizMsgCrypt = new WXBizMsgCrypt("123456", "jKNpnswdPlP7FlQbRqTjoJadIpptYhz46wZpVHF5Rjy", "wx4012ae791c4fda09");
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
@@ -13,16 +12,25 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 	default-autowire="byName">
 
 	<context:component-scan base-package="com" />
-<!-- 	<bean id="propertyConfigurer" -->
-<!-- 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
-<!-- 		<property name="location"> -->
-<!-- 			<value>classpath:redis/redis.properties</value> -->
+	<!-- 引入属性文件 -->
+<!-- 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
+<!-- 		<property name="locations"> -->
+<!-- 			<list> -->
+<!-- 				<value>classpath:redis/redis.properties</value> -->
+<!-- 				<value>classpath:redis/test.properties</value> -->
+<!-- 			</list> -->
 <!-- 		</property> -->
 <!-- 	</bean> -->
 
-	<!-- 引入同文件夹下的redis属性配置文件 -->
+
+	<!-- 引入定时器属性配置文件,可以打开注释，调试使用 -->
+	<!-- <import resource="classpath:quartz/TimerConfig.xml" /> -->
+	<!-- 引入redis属性配置文件 -->
 	<import resource="classpath:redis/redis-context.xml" />
 
+	<!-- 用户可以自己实现WechatSupport，并在实现类加上注解@Service("wechatService")即可自定义消息处理器 -->
+	<!--示例消息处理器为@com.itfvck.wechatframework.service.MyService -->
+	<!--设置lazy-init="true"，为防止wechatService未注入完成而报错 -->
 	<bean id="wechatWebService" class="com.itfvck.wechatframework.web.service.impl.WechatServiceTemplate" lazy-init="true">
 		<property name="wechatService" ref="wechatService" />
 	</bean>

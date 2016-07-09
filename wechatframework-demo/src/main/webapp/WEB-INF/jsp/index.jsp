@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String BASE_PATH = "/";
 	String path = request.getContextPath();
@@ -25,7 +25,8 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 </head>
 <body>
-	<a href="${redirectURI }">网页授权跳转</a>
+	<p>生成的重定向URL:${redirectURI }</p>
+	<a href="${redirectURI }">网页授权跳转，该链接需要在微信浏览器或者微信web开发者工具中打开</a>
 	<p>openid:${userInfo.openId }</p>
 	<p>unionid:${userInfo.unionId }</p>
 	<p>nickName:${userInfo.nickName }</p>

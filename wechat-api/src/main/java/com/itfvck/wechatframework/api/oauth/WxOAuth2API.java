@@ -29,7 +29,9 @@ public class WxOAuth2API {
 	 *              <p>
 	 *              第一步：用户同意授权，获取code ( 必须在微信客户端发起请求,如：微信公众号菜单链接，消息链接等) 传入appid、redirect_uri
 	 * @param redirectURI
+	 *            回调地址
 	 * @param appid
+	 *            公众号id
 	 * @return
 	 * @CreationDate 2016年5月9日 上午9:58:27
 	 * @Author vcdemon
@@ -43,9 +45,13 @@ public class WxOAuth2API {
 	 *              <p>
 	 *              第一步：用户同意授权，获取code ( 必须在微信客户端发起请求,如：微信公众号菜单链接，消息链接等) 传入appid、redirect_uri、scope、state
 	 * @param redirectURI
+	 *            回调地址
 	 * @param scope
+	 *            授权方式
 	 * @param state
+	 *            随机参数
 	 * @param appid
+	 *            公众号id
 	 * @return
 	 * @CreationDate 2016年5月9日 上午9:58:27
 	 * @Author vcdemon
