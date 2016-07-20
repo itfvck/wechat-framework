@@ -6,14 +6,17 @@
 		<version>1.0.0</version>
 		<relativePath>../wechat-framework-pom/pom.xml</relativePath>
 	</parent>
-	<artifactId>wechat-framework-admin</artifactId>
-	<packaging>war</packaging>
+	<artifactId>wechat-framework-service</artifactId>
 	<version>${wechat.version}</version>
-	<name>wechat-framework-admin Maven Webapp</name>
+	<packaging>jar</packaging>
+
+	<name>wechat-framework-service</name>
 	<url>http://maven.apache.org</url>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -22,7 +25,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<build>
-		<finalName>wechat-framework-admin</finalName>
-	</build>
 </project>
