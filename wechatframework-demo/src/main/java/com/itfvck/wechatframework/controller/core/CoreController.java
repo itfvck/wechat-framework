@@ -56,11 +56,11 @@ public class CoreController {
 			baseParams.setEncodingAESKey("");
 
 			BaseParams baseParams2 = new BaseParams();
-			baseParams2.setGhId("a");
-			baseParams2.setAppId("b");
-			baseParams2.setAppSecret("c ");
+			baseParams2.setGhId("gh_8efcc54b626f");
+			baseParams2.setAppId("wx4012ae791c4fda09");
+			baseParams2.setAppSecret("f95f6d616c40e38950e6e9e3f1bf4542 ");
 			baseParams2.setToken("123456");
-			baseParams2.setEncodingAESKey("d");
+			baseParams2.setEncodingAESKey("jKNpnswdPlP7FlQbRqTjoJadIpptYhz46wZpVHF5Rjy");
 
 			List<BaseParams> baseParamList = new ArrayList<BaseParams>();
 			baseParamList.add(baseParams);
@@ -106,11 +106,11 @@ public class CoreController {
 			baseParams.setToken("123456");
 
 			BaseParams baseParams2 = new BaseParams();
-			baseParams2.setGhId("a");
-			baseParams2.setAppId("b");
-			baseParams2.setAppSecret("c ");
+			baseParams2.setGhId("gh_8efcc54b626f");
+			baseParams2.setAppId("wx4012ae791c4fda09");
+			baseParams2.setAppSecret("f95f6d616c40e38950e6e9e3f1bf4542 ");
 			baseParams2.setToken("123456");
-			baseParams2.setEncodingAESKey("d");
+			baseParams2.setEncodingAESKey("jKNpnswdPlP7FlQbRqTjoJadIpptYhz46wZpVHF5Rjy");
 
 			List<BaseParams> baseParamList = new ArrayList<BaseParams>();
 			baseParamList.add(baseParams);

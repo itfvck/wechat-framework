@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="activateCardJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">   <!-- targetObject是Spring定时器的特殊属性 -->
+			<ref bean="timertaskService" /> <!-- 这个就是具体实现类，如果是注解，则必须为component指定value -->
+		</property>
+		<property name="targetMethod">    <!-- targetMethod是Spring定时器的特殊属性 -->
+			<value>run</value><!-- 就是java类中的任务方法 -->
+		</property>
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="sayRunTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail"><!-- jobDetail是Spring定时器的特殊属性 -->
+			<ref bean="activateCardJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<!-- <value>0 */1 * * * ?</value> --><!-- cronExpression是Spring定时器的特殊属性 -->
+
+			<value>*/3 * * * * ?</value>
+		</property>
+		<property name="startDelay">
+			<value>2000</value> <!-- 容器启动后 延时 <value>XX</value>毫秒 后 定时器开始启动 -->
+		</property>
+	</bean>
+
+
+	<bean autowire="no" lazy-init="false"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">    <!-- triggers是Spring定时器的特殊属性 -->
+			<list>
+				<ref bean="sayRunTrigger" />
+			</list>
+		</property>
+		<property name="autoStartup" value="true" />  <!-- 自动启动定时任务 -->
+	</bean>
+</beans>
