@@ -71,8 +71,6 @@ width: 100%; height: 600px;margin-top: 20px;
 			        var myChart = echarts.init(document.getElementById(id));
 			     	// 使用刚指定的配置项和数据显示图表。
 			        myChart.setOption(option,true);
-			        document.getElementById(id).style.display="block";
-			        document.getElementById(id).style.width="100%";
 				}
 			}
 		});
