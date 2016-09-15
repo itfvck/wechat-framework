@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
@@ -19,16 +18,16 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 	<!-- <value>classpath:wechat4j.properties</value> -->
 	<!-- </property> -->
 	<!-- </bean> -->
-	
+
 	<!-- 引入redis配置文件 -->
 	<import resource="classpath:redis/redis-context.xml" />
 	<!-- 引入quartz配置文件 -->
 	<!-- <import resource="classpath:quartz/TimerConfig.xml" /> -->
+	<import resource="classpath:quartz/spring-quartz.xml" />
 	<!-- 集成spring-session -->
 	<import resource="classpath:spring/spring-session.xml" />
 
-	<bean id="wechatWebService"
-		class="com.itfvck.wechatframework.web.service.impl.WechatServiceTemplate">
+	<bean id="wechatWebService" class="com.itfvck.wechatframework.web.service.impl.WechatServiceTemplate">
 		<property name="wechatService" ref="wechatService" />
 	</bean>
 </beans>

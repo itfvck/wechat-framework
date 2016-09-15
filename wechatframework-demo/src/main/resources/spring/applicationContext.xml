@@ -25,6 +25,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 
 	<!-- 引入定时器属性配置文件,可以打开注释，调试使用 -->
 	<!-- <import resource="classpath:quartz/TimerConfig.xml" /> -->
+	<import resource="classpath:quartz/spring-quartz.xml" />
 	<!-- 引入redis属性配置文件 -->
 	<import resource="classpath:redis/redis-context.xml" />
 
