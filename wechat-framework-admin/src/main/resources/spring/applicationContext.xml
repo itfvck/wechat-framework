@@ -24,6 +24,8 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 	<import resource="classpath:redis/redis-context.xml" />
 	<!-- 引入quartz配置文件 -->
 	<!-- <import resource="classpath:quartz/TimerConfig.xml" /> -->
+	<!-- 集成spring-session -->
+	<import resource="classpath:spring/spring-session.xml" />
 
 	<bean id="wechatWebService"
 		class="com.itfvck.wechatframework.web.service.impl.WechatServiceTemplate">
