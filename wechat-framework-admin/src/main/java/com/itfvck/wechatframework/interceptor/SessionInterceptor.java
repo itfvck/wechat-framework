@@ -84,7 +84,6 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	 * @return 不存在为false，存在系统菜单中，为true
 	 * @throws Exception
 	 * @CreationDate 2015年11月26日 下午3:29:01
-	 * @Author lidong(dli@gdeng.cn)
 	 */
 	private boolean checkUrl(String url) throws Exception {
 		return false;

@@ -8,7 +8,7 @@ import com.itfvck.wechatframework.core.common.BaseData;
  * @Description 用户标签
  * @Project weixin-core
  * @ClassName Tag.java
- * @Author lidong(dli@gdeng.cn)
+ * @Author vcdemon
  * @CreationDate 2016年5月16日 上午9:19:12
  * @Version V2.0
  * @Copyright 谷登科技 2015-2016

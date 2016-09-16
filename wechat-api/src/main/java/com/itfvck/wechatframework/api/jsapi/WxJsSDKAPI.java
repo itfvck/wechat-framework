@@ -64,7 +64,6 @@ public class WxJsSDKAPI {
 	 *            当前网页url
 	 * @return
 	 * @CreationDate 2016年5月25日 下午4:00:42
-	 * @Author lidong(dli@gdeng.cn)
 	 */
 	public static JSSDKParams signatureJS_SDK(String ticket, String url, String appid) {
 		JSSDKParams jssdkConf = new JSSDKParams();
@@ -81,7 +80,7 @@ public class WxJsSDKAPI {
 	 *            传入ticket(jsapi_ticket),url
 	 * @return
 	 * @CreationDate 2016年5月25日 下午4:00:42
-	 * @Author lidong(dli@gdeng.cn)
+	 * @Author vcdemon
 	 */
 	private static String signatureJSSDKConf(String ticket, String url, String nonceStr, Long timestamp) {
 		return EncryptUtil.SHA1Encrypt(new StringBuilder().append("jsapi_ticket=").append(ticket).append("&noncestr=").append(nonceStr).append("&timestamp=").append(timestamp)

@@ -15,7 +15,7 @@ import com.itfvck.wechatframework.api.token.WxAccessTokenAPI;
 /**
  * token管理抽象类，
  * 
- * @author lidong
+ * @author vcdemon
  *
  */
 public class AbstractTokenProxy implements TokenProxy {

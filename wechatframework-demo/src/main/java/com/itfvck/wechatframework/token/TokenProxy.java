@@ -3,7 +3,7 @@ package com.itfvck.wechatframework.token;
 /**
  * token管理接口
  * 
- * @author lidong
+ * @author vcdemon
  *
  */
 public interface TokenProxy {

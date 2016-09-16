@@ -1,7 +1,7 @@
 /**
  * 微信JS-SDK
  * 
- * @author lidong
+ * @author vcdemon
  */
 
 var url = window.location.href;

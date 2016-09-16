@@ -11,7 +11,7 @@ import com.itfvck.wechatframework.token.AbstractTokenProxy;
 /**
  * 默认token管理类
  * 
- * @author lidong
+ * @author vcdemon
  *
  */
 @Service("tokenProxy")

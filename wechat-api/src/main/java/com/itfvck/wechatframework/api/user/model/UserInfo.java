@@ -6,7 +6,7 @@ import com.itfvck.wechatframework.core.common.BaseData;
 
 /**
  * @Description 微信用户信息
- * @Author lidong
+ * @Author vcdemon
  * @CreationDate 2016年5月12日 上午9:43:28
  */
 public class UserInfo extends BaseData {

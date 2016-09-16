@@ -39,7 +39,7 @@ public class EncryptUtil {
      * @param source
      * @return
      * @CreationDate 2016年5月25日 下午3:16:03
-     * @Author lidong(dli@gdeng.cn)
+     * @Author vcdemon
      */
     public static String SHA1Encrypt(String source) {
         String dest = null;
