@@ -1,5 +1,8 @@
 package com.itfvck.wechatframework.api.pay.protocol.unifiedorder;
 
+import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
+
 /**
  * 统一下单请求对象
  * <p>
@@ -8,13 +11,18 @@ package com.itfvck.wechatframework.api.pay.protocol.unifiedorder;
  * <p/>
  * Created by xuwen on 2015-12-10.
  */
-public class UnifiedorderRequest {
+public class UnifiedorderRequest implements Serializable{
 
+//	@XmlElement(name = "appid")
 	private String appid;
+//	@XmlElement(name = "mch_id")
 	private String mch_id;
+//	@XmlElement(name = "device_info")
 	private String device_info = "WEB";
+//	@XmlElement(name = "nonce_str")
 	private String nonce_str;
 	private String sign;
+//	@XmlElement(name = "body")
 	private String body;
 	private String detail;
 	private String attach;
@@ -189,5 +197,32 @@ public class UnifiedorderRequest {
 
 	public void setOpenid(String openid) {
 		this.openid = openid;
+	}
+
+
+	@Override
+	public String toString() {
+		return "UnifiedorderRequest{" +
+				"appid='" + appid + '\'' +
+				", mch_id='" + mch_id + '\'' +
+				", device_info='" + device_info + '\'' +
+				", nonce_str='" + nonce_str + '\'' +
+				", sign='" + sign + '\'' +
+				", body='" + body + '\'' +
+				", detail='" + detail + '\'' +
+				", attach='" + attach + '\'' +
+				", out_trade_no='" + out_trade_no + '\'' +
+				", fee_type='" + fee_type + '\'' +
+				", total_fee=" + total_fee +
+				", spbill_create_ip='" + spbill_create_ip + '\'' +
+				", time_start='" + time_start + '\'' +
+				", time_expire='" + time_expire + '\'' +
+				", goods_tag='" + goods_tag + '\'' +
+				", notify_url='" + notify_url + '\'' +
+				", trade_type='" + trade_type + '\'' +
+				", product_id='" + product_id + '\'' +
+				", limit_pay='" + limit_pay + '\'' +
+				", openid='" + openid + '\'' +
+				'}';
 	}
 }

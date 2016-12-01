@@ -1,6 +1,7 @@
 package com.itfvck.wechatframework.api.pay;
 
 import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 
 /**
  * H5调起支付API的参数对象
@@ -10,67 +11,67 @@ import javax.xml.bind.annotation.XmlElement;
  * <p/>
  * Created by xuwen on 2015-12-10.
  */
-public class H5PayParam {
-    private String appid ;
-    private String timeStamp;
-    private String nonceStr;
-    private String packageWithPrepayId; // 参数名package
-    private String signType = "MD5";
-    private String paySign;
+public class H5PayParam implements Serializable {
+	private String appid;
+	private String timeStamp;
+	private String nonceStr;
+	private String packageWithPrepayId; // 参数名package
+	private String signType = "MD5";
+	private String paySign;
 
-    @XmlElement(name = "appId")
-    public String getAppid() {
-        return appid;
-    }
+	@XmlElement(name = "appId")
+	public String getAppid() {
+		return appid;
+	}
 
-    public void setAppid(String appid) {
-        this.appid = appid;
-    }
+	public void setAppid(String appid) {
+		this.appid = appid;
+	}
 
-    public String getTimeStamp() {
-        return timeStamp;
-    }
+	public String getTimeStamp() {
+		return timeStamp;
+	}
 
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
-    }
+	public void setTimeStamp(String timeStamp) {
+		this.timeStamp = timeStamp;
+	}
 
-    public String getNonceStr() {
-        return nonceStr;
-    }
+	public String getNonceStr() {
+		return nonceStr;
+	}
 
-    public void setNonceStr(String nonceStr) {
-        this.nonceStr = nonceStr;
-    }
+	public void setNonceStr(String nonceStr) {
+		this.nonceStr = nonceStr;
+	}
 
-    @XmlElement(name = "package")
-    public String getPackageWithPrepayId() {
-        return packageWithPrepayId;
-    }
+	@XmlElement(name = "package")
+	public String getPackageWithPrepayId() {
+		return packageWithPrepayId;
+	}
 
-    public void setPackageWithPrepayId(String packageWithPrepayId) {
-        this.packageWithPrepayId = packageWithPrepayId;
-    }
+	public void setPackageWithPrepayId(String packageWithPrepayId) {
+		this.packageWithPrepayId = packageWithPrepayId;
+	}
 
-    public String getSignType() {
-        return signType;
-    }
+	public String getSignType() {
+		return signType;
+	}
 
-    public void setSignType(String signType) {
-        this.signType = signType;
-    }
+	public void setSignType(String signType) {
+		this.signType = signType;
+	}
 
-    public String getPaySign() {
-        return paySign;
-    }
+	public String getPaySign() {
+		return paySign;
+	}
 
-    public void setPaySign(String paySign) {
-        this.paySign = paySign;
-    }
+	public void setPaySign(String paySign) {
+		this.paySign = paySign;
+	}
 
-    @Override
-    public String toString() {
-        return "H5PayConfig{" + "appid='" + appid + '\'' + ", timeStamp='" + timeStamp + '\'' + ", nonceStr='" + nonceStr + '\'' + ", packageWithPrepayId='" + packageWithPrepayId
-                + '\'' + ", signType='" + signType + '\'' + ", paySign='" + paySign + '\'' + '}';
-    }
+	@Override
+	public String toString() {
+		return "H5PayConfig{" + "appid='" + appid + '\'' + ", timeStamp='" + timeStamp + '\'' + ", nonceStr='" + nonceStr + '\'' + ", packageWithPrepayId='" + packageWithPrepayId
+				+ '\'' + ", signType='" + signType + '\'' + ", paySign='" + paySign + '\'' + '}';
+	}
 }

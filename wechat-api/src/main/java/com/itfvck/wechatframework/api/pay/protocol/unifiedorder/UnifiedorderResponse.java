@@ -1,5 +1,7 @@
 package com.itfvck.wechatframework.api.pay.protocol.unifiedorder;
 
+import java.io.Serializable;
+
 /**
  * 统一下单响应对象
  * <p>
@@ -8,8 +10,9 @@ package com.itfvck.wechatframework.api.pay.protocol.unifiedorder;
  * <p/>
  * Created by xuwen on 2015-12-10.
  */
-public class UnifiedorderResponse {
-
+public class UnifiedorderResponse implements Serializable {
+    private String return_code;
+    private String return_msg;
     private String appid;
     private String mch_id;
     private String device_info;
@@ -22,6 +25,22 @@ public class UnifiedorderResponse {
     private String trade_type;
     private String prepay_id;
     private String code_url;
+
+    public String getReturn_msg() {
+        return return_msg;
+    }
+
+    public void setReturn_msg(String return_msg) {
+        this.return_msg = return_msg;
+    }
+
+    public String getReturn_code() {
+        return return_code;
+    }
+
+    public void setReturn_code(String return_code) {
+        this.return_code = return_code;
+    }
 
     public String getAppid() {
         return appid;

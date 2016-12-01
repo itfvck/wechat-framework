@@ -9,12 +9,15 @@ import java.util.Arrays;
  * Created by xuwen on 2015-12-11.
  */
 public class PayResultNotifyResponse {
+    private String return_code;
+    private String return_msg;
 
     private String appid;
     private String mch_id;
     private String device_info;
     private String nonce_str;
     private String sign;
+    private String sign_type;
     private String result_code;
     private String err_code;
     private String err_code_des;
@@ -23,6 +26,7 @@ public class PayResultNotifyResponse {
     private String trade_type;
     private String bank_type;
     private int total_fee;
+    private int settlement_total_fee;
     private String fee_type;
     private int cash_fee;
     private String cash_fee_type;
@@ -34,6 +38,38 @@ public class PayResultNotifyResponse {
     private String out_trade_no;
     private String attach;
     private String time_end;
+
+    public String getSign_type() {
+        return sign_type;
+    }
+
+    public void setSign_type(String sign_type) {
+        this.sign_type = sign_type;
+    }
+
+    public int getSettlement_total_fee() {
+        return settlement_total_fee;
+    }
+
+    public void setSettlement_total_fee(int settlement_total_fee) {
+        this.settlement_total_fee = settlement_total_fee;
+    }
+
+    public String getReturn_code() {
+        return return_code;
+    }
+
+    public void setReturn_code(String return_code) {
+        this.return_code = return_code;
+    }
+
+    public String getReturn_msg() {
+        return return_msg;
+    }
+
+    public void setReturn_msg(String return_msg) {
+        this.return_msg = return_msg;
+    }
 
     public String getAppid() {
         return appid;

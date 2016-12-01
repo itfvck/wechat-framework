@@ -17,6 +17,7 @@ import java.util.Map;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -109,16 +110,20 @@ public class WxPayAPI {
 	 * @throws PayApiException
 	 * @throws PayBusinessException
 	 */
-	public static UnifiedorderResponse unifiedorder(UnifiedorderRequest request) throws SignatureException, PayApiException, PayBusinessException {
-		request.setSign(signature(request));
-		String postData = XmlHelper.toXML(request);
+	public static UnifiedorderResponse unifiedorder(UnifiedorderRequest request, String mchKey) throws SignatureException, PayApiException, PayBusinessException {
+		request.setSign(signature(request, mchKey));
+		String postData = XmlHelper.toXML(request).replace("__", "_");
 		logger.info("post data \n" + postData);
 		String postResult = post(HTTPS_API_MCH_WEIXIN_QQ_COM_PAY_UNIFIEDORDER, postData);
 		logger.info("post result \n" + postResult);
-		checkAccess(postResult);
-		checkBusiness(postResult);
-		validResponseSign(postResult);
+//		checkAccess(postResult);
+//		checkBusiness(postResult);
+//		validResponseSign(postResult);
+		logger.info("unifiedorder post result开始转换到UnifiedorderResponse ");
 		UnifiedorderResponse response = (UnifiedorderResponse) XmlHelper.toObj(postResult, UnifiedorderResponse.class);
+		logger.info("UnifiedorderRequest request \n" + request.toString());
+		logger.info("UnifiedorderResponse response \n" + response.toString());
+		logger.info("mchKey \n" + mchKey);
 		return response;
 	}
 
@@ -313,45 +318,21 @@ public class WxPayAPI {
 	 * @throws PayApiException
 	 * @throws PayBusinessException
 	 */
-	public static PayResultNotifyResponse parsePayResultNotify(ServletRequest servletRequest, ServletResponse servletResponse)
-	        throws SignatureException, PayApiException, PayBusinessException {
-		PayApiException exception = new PayApiException(PayCode.SUCCESS, "OK");
-		String postResult;
-		try {
-			int len;
-			byte[] b = new byte[1024];
-			ByteArrayOutputStream stream = new ByteArrayOutputStream();
-			InputStream servletInputStream = servletRequest.getInputStream();
-			while ((len = servletInputStream.read(b)) != -1) {
-				stream.write(b, 0, len);
-			}
-			postResult = stream.toString(Consts.UTF_8.name());
-		} catch (IOException e) {
-			logger.error("支付结果通知数据解析失败", e);
-			exception = new PayApiException(PayCode.FAIL, "支付结果通知数据解析失败");
-			responseToWechat(servletResponse, XmlHelper.toXML(exception));
-			throw exception;
+	public static PayResultNotifyResponse parsePayResultNotify(HttpServletRequest servletRequest)
+			throws Exception {
+
+		String parseXml = XmlHelper.parseXml(servletRequest);
+		/*String postResult;
+		int len;
+		byte[] b = new byte[1024];
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		InputStream servletInputStream = servletRequest.getInputStream();
+		while ((len = servletInputStream.read(b)) != -1) {
+			stream.write(b, 0, len);
 		}
-		logger.info("result data \n" + postResult);
-		checkAccess(postResult);
-		try {
-			validResponseSign(postResult);
-		} catch (SignatureException e) {
-			exception = new PayApiException(PayCode.FAIL, "签名校验失败");
-			responseToWechat(servletResponse, XmlHelper.toXML(exception));
-			throw e;
-		}
-		checkBusiness(postResult);
-		PayResultNotifyResponse response = (PayResultNotifyResponse) XmlHelper.toObj(postResult, PayResultNotifyResponse.class);
-		try {
-			parseCouponsForPayResultNotify(postResult, response);
-		} catch (Exception e) {
-			logger.error("解析代金券或立减优惠失败", e);
-			exception = new PayApiException(PayCode.FAIL, "解析代金券或立减优惠失败");
-			responseToWechat(servletResponse, XmlHelper.toXML(exception));
-			throw exception;
-		}
-		responseToWechat(servletResponse, XmlHelper.toXML(exception));
+		postResult = stream.toString(Consts.UTF_8.name());*/
+		logger.info("parseXml data \n" + parseXml);
+		PayResultNotifyResponse response = (PayResultNotifyResponse) XmlHelper.toObj(parseXml, PayResultNotifyResponse.class);
 		return response;
 	}
 
@@ -382,7 +363,7 @@ public class WxPayAPI {
 	 * @throws SAXException
 	 */
 	private static void parseCouponsForPayResultNotify(String postResult, PayResultNotifyResponse payResultNotifyResponse)
-	        throws ParserConfigurationException, IOException, SAXException {
+			throws ParserConfigurationException, IOException, SAXException {
 		List<String> coupon_id_$n = new ArrayList<String>();
 		List<Integer> coupon_fee_$n = new ArrayList<Integer>();
 		Map<String, Object> mapFromPayResultNotifyXML = getMapFromXMLString(postResult);
@@ -525,17 +506,13 @@ public class WxPayAPI {
 	/**
 	 * 构造H5调用支付的参数对象
 	 *
-	 * @param timeStamp
-	 * @param nonceStr
-	 * @param prepayId
+	 * @param config H5PayParam参数
+	 * @param mchkey 商户支付key
 	 * @return
 	 */
-	public static H5PayParam buildH5PayConfig(String timeStamp, String nonceStr, String prepayId) {
-		H5PayParam config = new H5PayParam();
-		config.setTimeStamp(timeStamp);
-		config.setNonceStr(nonceStr);
-		config.setPackageWithPrepayId("prepay_id=" + prepayId);
-		config.setPaySign(signature(config));
+	public static H5PayParam buildH5PayConfig(H5PayParam config, String mchkey) {
+		config.setPackageWithPrepayId("prepay_id=" + config.getPackageWithPrepayId());
+		config.setPaySign(signature(config, mchkey));
 		return config;
 	}
 
@@ -599,18 +576,8 @@ public class WxPayAPI {
 		}
 	}
 
-	/**
-	 * 支付签名算法
-	 * <p>
-	 * <a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_3">
-	 * 开发文档
-	 * </p>
-	 *
-	 * @param object
-	 *            待签名对象
-	 * @return
-	 */
-	private static String signature(Object object) {
+
+	private static Map<String, Object> getMapParams(Object object) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Field[] fields = object.getClass().getDeclaredFields();
 		// 字典序
@@ -642,7 +609,7 @@ public class WxPayAPI {
 				// never throws...
 			}
 		}
-		return signature(map);
+		return map;
 	}
 
 	/**
@@ -652,8 +619,37 @@ public class WxPayAPI {
 	 * 开发文档
 	 * </p>
 	 *
-	 * @param map
-	 *            待签名对象
+	 * @param object 待签名对象
+	 * @return
+	 */
+	private static String signature(Object object, String mchKey) {
+		return signature(getMapParams(object), mchKey);
+	}
+
+	/**
+	 * 支付签名算法
+	 * <p>
+	 * <a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_3">
+	 * 开发文档
+	 * </p>
+	 *
+	 * @param object 待签名对象
+	 * @return
+	 */
+	private static String signature(Object object) {
+
+//		return signature(getMapParams(object));
+		return null;
+	}
+
+	/**
+	 * 支付签名算法
+	 * <p>
+	 * <a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_3">
+	 * 开发文档
+	 * </p>
+	 *
+	 * @param map 待签名对象
 	 * @return
 	 */
 	private static String signature(Map<String, Object> map, String mchKey) {
