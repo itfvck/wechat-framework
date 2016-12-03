@@ -1,5 +1,6 @@
 package com.itfvck.wechatframework.api.pay.protocol.pay_result_notify;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Arrays;
  * <p/>
  * Created by xuwen on 2015-12-11.
  */
-public class PayResultNotifyResponse {
+public class PayResultNotifyResponse implements Serializable{
     private String return_code;
     private String return_msg;
 

@@ -1,41 +1,5 @@
 package com.itfvck.wechatframework.api.pay;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.http.Consts;
-import org.apache.http.HttpEntity;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.entity.ContentType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
 import com.itfvck.wechatframework.api.pay.exception.PayApiException;
 import com.itfvck.wechatframework.api.pay.exception.PayBusinessException;
 import com.itfvck.wechatframework.api.pay.exception.SignatureException;
@@ -54,6 +18,31 @@ import com.itfvck.wechatframework.api.pay.protocol.report.ReportResponse;
 import com.itfvck.wechatframework.api.pay.protocol.unifiedorder.UnifiedorderRequest;
 import com.itfvck.wechatframework.api.pay.protocol.unifiedorder.UnifiedorderResponse;
 import com.itfvck.wechatframework.core.util.XmlHelper;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.http.Consts;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.fluent.Request;
+import org.apache.http.entity.ContentType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.*;
 
 /**
  * <h2>支付管理</h2>
@@ -318,7 +307,7 @@ public class WxPayAPI {
 	 * @throws PayApiException
 	 * @throws PayBusinessException
 	 */
-	public static PayResultNotifyResponse parsePayResultNotify(HttpServletRequest servletRequest)
+	public static UnifiedorderResponse parsePayResultNotify(HttpServletRequest servletRequest)
 			throws Exception {
 
 		String parseXml = XmlHelper.parseXml(servletRequest);
@@ -331,9 +320,10 @@ public class WxPayAPI {
 			stream.write(b, 0, len);
 		}
 		postResult = stream.toString(Consts.UTF_8.name());*/
-		logger.info("parseXml data \n" + parseXml);
-		PayResultNotifyResponse response = (PayResultNotifyResponse) XmlHelper.toObj(parseXml, PayResultNotifyResponse.class);
-		return response;
+		logger.info("parsePayResultNotify data begin\n" + parseXml);
+		UnifiedorderResponse payResultNotifyResponse = (UnifiedorderResponse) XmlHelper.toObj(parseXml, UnifiedorderResponse.class);
+		logger.info("parsePayResultNotify data end\n" + payResultNotifyResponse.toString());
+		return payResultNotifyResponse;
 	}
 
 	/**
