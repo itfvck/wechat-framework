@@ -39,6 +39,43 @@ public class UnifiedorderRequest implements Serializable{
 	private String limit_pay;
 	private String openid;
 
+	/**
+	 * 子商户公众账号ID 微信分配的子商户公众账号ID
+	 */
+	private String sub_appid;
+	/**
+	 * 子商户号 微信支付分配的子商户号
+	 */
+	private String sub_mch_id;
+	/**
+	 * 用户子标识  trade_type=JSAPI，此参数必传，用户在子商户appid下的唯一标识。openid和sub_openid可以选传其中之一，如果选择传sub_openid,则必须传sub_appid。下单前需要调用【网页授权获取用户信息】接口获取到用户的Openid。
+	 */
+	private String sub_openid;
+
+	public String getSub_appid() {
+		return sub_appid;
+	}
+
+	public void setSub_appid(String sub_appid) {
+		this.sub_appid = sub_appid;
+	}
+
+	public String getSub_mch_id() {
+		return sub_mch_id;
+	}
+
+	public void setSub_mch_id(String sub_mch_id) {
+		this.sub_mch_id = sub_mch_id;
+	}
+
+	public String getSub_openid() {
+		return sub_openid;
+	}
+
+	public void setSub_openid(String sub_openid) {
+		this.sub_openid = sub_openid;
+	}
+
 	public String getAppid() {
 		return appid;
 	}
